@@ -8,7 +8,13 @@ topValue = +cubes[posCubeUser].style.top.substring (0,cubes[posCubeUser].style.t
 leftValue = +cubes[posCubeUser].style.left.substring (0,cubes[posCubeUser].style.left.length -1);
 
  console.log(event.code);
- if (event.code==="ArrowDown"){
+ //debugger;
+console.log ( "code : " , event.code, event.key,event.keyCode);
+ if (event.keyCode==32){
+     $( ".target" ).first().trigger("click");
+ }
+     if (event.code==="ArrowDown"){
+     // $( ".target" ).first().trigger("click");
     topValue +=5;     
  }
  if (topValue > 90){
