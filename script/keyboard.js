@@ -1,6 +1,6 @@
 
 //const cube = document.querySelector("#target");
-document.addEventListener("keydown",moving);
+//document.addEventListener("keydown",moving);
 let topValue=40;
 let leftValue=40;
 function moving(event){

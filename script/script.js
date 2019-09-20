@@ -33,6 +33,8 @@ console.log("all player ! " + document.querySelector ("#playerDuck"));
 const body = document.querySelector("body");
 
 //console.log(body);
+const players2 = document.querySelector("#formRestart");
+players2.addEventListener("submit", start);
 
 function clearAll(){
     const cube = document.querySelector("#target");
@@ -65,9 +67,12 @@ function timerDuckGame() {
 
 function start(e) {
     e.preventDefault();
+    btnRestart.style.display = "none";
     players.style.display = "none";
+    cube.style.backgroundColor = "transparent";
     // create the click event on cube
     cube.addEventListener("click", touched);
+    document.addEventListener("keydown",moving);
     body.style.cursor = "crosshair";
     counterTimeOut = setTimeout(timerDuckGame, 5000);
     sectionCube.style.display = "block";
@@ -106,6 +111,9 @@ function victory(whoWin)
 }
 function restart(){
     btnRestart.style.display = "initial";
-    
+   // e.preventDefault();
+   const restartbtn= document.querySelector("#formRestart");
+   restartbtn.addEventListener("submit",start);
 
+   console.log(restartbtn)
 }
