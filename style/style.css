@@ -1,23 +1,25 @@
-#target {
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 0;
+  margin: 0;
   -webkit-transition-duration: 0.3s;
           transition-duration: 0.3s;
+  list-style: none;
+}
+
+#target {
   height: 200px;
   width: 200px;
-  background-color: red;
-  border-radius: 50%;
+  background-color: green;
   position: absolute;
   top: 0;
   left: 0;
   -webkit-animation-name: moveIt;
           animation-name: moveIt;
-  -webkit-animation-duration: 15s;
-          animation-duration: 15s;
+  -webkit-animation-duration: 30s;
+          animation-duration: 30s;
   -webkit-animation-iteration-count: infinite;
           animation-iteration-count: infinite;
-}
-
-#target:hover {
-  height: 50px;
-  width: 50px;
 }
 /*# sourceMappingURL=style.css.map */
