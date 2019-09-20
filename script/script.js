@@ -58,7 +58,7 @@ function timerDuckGame() {
     alert ("victory of the player at the keyboard");
     clearAll();
     victory(playerPlusScore[0].querySelector("h1").textContent);
-    clearAll();
+    //clearAll();
 }
 
 function start(e) {
@@ -89,11 +89,11 @@ function start(e) {
 
 function victory(whoWin)
 {
-    console.log( playerPlusScore[0].querySelector("h1").textContent );
+  
     for (const listUsers of playerPlusScore) {
         if ( listUsers.querySelector("h1").textContent == whoWin )
         {
-            listUsers.querySelector("p").value += 1;
+            listUsers.querySelector("p").textContent =  +listUsers.querySelector("p").textContent + 1;
         }
     }
     
