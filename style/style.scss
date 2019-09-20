@@ -50,13 +50,16 @@
     position: absolute;
    align-items: center;
 }
-    
-
-#sectionGame {
-    display: flex;
+    /*
+display: flex;
     justify-content: center;
     align-items: center;
-    
+*/
+#sectionGame{
+    display: relative;
+    height: 100%;
+
+
 }
 
 #rstbt form{
@@ -64,6 +67,9 @@
     justify-content:center ;
     margin-top:35%;
     
+}
+#rstbt{
+    margin: auto;
 }
 #target {
     
