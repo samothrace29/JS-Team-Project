@@ -23,12 +23,12 @@ const body = document.querySelector("body");
 
 
 function touched(e) {
-    alert("You win!");
     const cube = document.querySelector("#target");
     cube.removeEventListener("click", touched);
     clearTimeout ( counterTimeOut );
     
     cube.style.backgroundColor = "red";
+    alert("You win!");
 };
 
 
