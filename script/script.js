@@ -3,9 +3,8 @@ const cube = document.querySelector("#target");
 const sectionCube = document.querySelector("#gameRunning");
 sectionCube.style.display = "none";
 
-//const btnRestart = document.querySelector("#btnRestart");
-
-//btnRestart.style.display = "none";
+const btnRestart = document.querySelector("#rstbt");
+btnRestart.style.display = "none";
 
 
 
