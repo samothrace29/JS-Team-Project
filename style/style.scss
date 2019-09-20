@@ -18,12 +18,22 @@
     background-size: 100% 100%;
     justify-content: space-between;
 }
+
+#startTheGame p{
+    padding: 10px 0;
+}
+
 #startTheGame{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     width: 800px;
     height: 600px;
     position: relative;
-    left:200px;
-    top:200px;
+    
+   /* left:200px;
+    top:200px;*/
     //background-color:lightblue;
 }
 #sectionScore{
@@ -60,7 +70,7 @@
 #rstbt form{
     display: flex;
     justify-content:center ;
-    margin-top:35%;
+    //margin-top:35%;
     
 }
 #rstbt{
