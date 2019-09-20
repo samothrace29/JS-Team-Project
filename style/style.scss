@@ -11,7 +11,8 @@
     position: relative;
     left:200px;
     top:200px;
-    background-color: lightblue;
+    background-image:url("../images/5383571_070819-wtvd-rice-paddy-field-art-am-vid.jpg");
+    background-size: 100% 100%;
 }
 #startTheGame{
     width: 500px;
@@ -19,7 +20,7 @@
     position: relative;
     left:200px;
     top:200px;
-    background-color: lightblue;
+    //background-color:lightblue;
 }
 
 #target {
@@ -30,7 +31,8 @@
     position: absolute;
     top: 40%;
     left: 40%;
-    
-    
+    background-image: url("../images/imageedit_1_7112313590.png");
+    background-size: cover;
+    background-color: transparent;
  }
 
