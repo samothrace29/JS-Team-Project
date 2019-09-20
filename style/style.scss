@@ -5,7 +5,15 @@
     list-style: none;
     
 }
-section{
+#gameRunning{
+    width: 500px;
+    height: 500px;
+    position: relative;
+    left:200px;
+    top:200px;
+    background-color: lightblue;
+}
+#startTheGame{
     width: 500px;
     height: 500px;
     position: relative;

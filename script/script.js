@@ -1,7 +1,8 @@
 
-// Create the click event on cube
 const cube = document.querySelector("#target");
-cube.style.display = "none";
+// cube.style.display = "none";
+const sectionCube = document.querySelector("#gameRunning");
+sectionCube.style.display = "none";
 
 // Get value from the form
 const players = document.querySelector("#startTheGame");
@@ -42,5 +43,6 @@ function start(e) {
     cube.addEventListener("click", touched);
     body.style.cursor = "crosshair";
     setTimeout(timerDuckGame, 5000);
-    cube.style.display = "block";
+    sectionCube.style.display = "block";
+    //cube.style.display = "block";
 }
