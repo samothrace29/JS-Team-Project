@@ -58,6 +58,7 @@
 
 #sectionGame {
   display: relative;
+  height: 100%;
 }
 
 #rstbt form {
@@ -68,6 +69,10 @@
       -ms-flex-pack: center;
           justify-content: center;
   margin-top: 35%;
+}
+
+#rstbt {
+  margin: auto;
 }
 
 #target {
