@@ -61,9 +61,9 @@ function start(e) {
 
 function victory(whoWin)
 {
-    console.log( playerPlusScore[0].querySelector("h1").value );
+    console.log( playerPlusScore[0].querySelector("h1").textContent );
     for (const listUsers of playerPlusScore) {
-        if ( listUsers.querySelector("h1").value == whoWin )
+        if ( listUsers.querySelector("h1").textContent == whoWin )
             {
                 //listUsers.querySelector("p").value += 1;
             }
