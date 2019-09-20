@@ -3,6 +3,9 @@ const cube = document.querySelector("#target");
 const sectionCube = document.querySelector("#gameRunning");
 sectionCube.style.display = "none";
 
+
+
+
 // Get value from the form
 const players = document.querySelector("#startTheGame");
 players.addEventListener("submit", start);
@@ -72,13 +75,15 @@ function start(e) {
     playerPlusScore[0].querySelector("h1").textContent=document.getElementById ("playerDuck").value;
     playerPlusScore[1].querySelector("h1").textContent=document.getElementById ("playerGun").value;
     
-
+    
     console.log("test : " + playerPlusScore[1].querySelector("h1").textContent + " ;");
     console.log("test : " + playerPlusScore[0].querySelector("h1").textContent + " ;");
     if ( playerPlusScore[0].querySelector("h1").textContent.length == 0 ) {
         alert("alone version");
     }
     
+    const sectionScore = document.querySelector("#sectionScore");
+    sectionScore.style.display = "initial";
     
 }
 
@@ -87,12 +92,12 @@ function victory(whoWin)
     console.log( playerPlusScore[0].querySelector("h1").textContent );
     for (const listUsers of playerPlusScore) {
         if ( listUsers.querySelector("h1").textContent == whoWin )
-            {
-                listUsers.querySelector("p").value += 1;
-            }
+        {
+            listUsers.querySelector("p").value += 1;
+        }
     }
-   
-        
+    
+    
     
     
     body.style.cursor = "auto";
