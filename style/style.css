@@ -111,4 +111,8 @@
   background-size: cover;
   background-color: transparent;
 }
+
+body {
+  background-image: url("../images/717507.jpg");
+}
 /*# sourceMappingURL=style.css.map */
