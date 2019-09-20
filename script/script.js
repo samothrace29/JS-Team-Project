@@ -12,7 +12,10 @@ let counterTimeOut = 0;
 
 const playerPlusScore = document.querySelectorAll ("ul li");
 
-console.log(playerPlusScore);
+console.log("all player ! " + document.querySelector ("#playerDuck"));
+// console.log ( " Debugger " );
+//debugger;
+
 
 
 
@@ -35,8 +38,8 @@ function touched(e) {
     document.removeEventListener("keydown",moving);
     cube.style.backgroundColor = "red";
     alert("You win!");
-    victory("gun");
-
+    victory(playerPlusScore[1].querySelector("h1").textContent);
+    
 };
 
 
@@ -45,7 +48,7 @@ function timerDuckGame() {
     cube.removeEventListener("click", touched);
     document.removeEventListener("keydown",moving);
     alert ("victory of the player at the keyboard");
-    victory("duck");
+    victory(playerPlusScore[0].querySelector("h1").textContent);
 }
 
 function start(e) {
@@ -57,6 +60,13 @@ function start(e) {
     counterTimeOut = setTimeout(timerDuckGame, 5000);
     sectionCube.style.display = "block";
     //cube.style.display = "block";
+    
+    // Changing the username in the game
+    playerPlusScore[0].querySelector("h1").textContent=document.getElementById ("playerDuck").value;
+    playerPlusScore[1].querySelector("h1").textContent=document.getElementById ("playerGun").value;
+
+
+
 }
 
 function victory(whoWin)
@@ -69,10 +79,10 @@ function victory(whoWin)
             }
     }
     if (whoWin == "duck") {
-
+        
     }
     else{
-
+        
     }
-
+    
 }
