@@ -7,35 +7,43 @@
 }
 
 #gameRunning {
-  width: 500px;
-  height: 500px;
+  width: 800px;
+  height: 600px;
   position: relative;
   left: 200px;
   top: 200px;
-  background-color: lightblue;
+  background-image: url("../images/5383571_070819-wtvd-rice-paddy-field-art-am-vid.jpg");
+  background-size: 100% 100%;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
 
 #startTheGame {
-  width: 500px;
-  height: 500px;
+  width: 800px;
+  height: 600px;
   position: relative;
   left: 200px;
   top: 200px;
-  background-color: lightblue;
 }
 
 #sectionScore {
-  position: absolute;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .score {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
   text-align: center;
+  position: absolute;
+  top: -20%;
+}
+
+.score li {
+  padding-right: 700px;
 }
 
 #target {
@@ -45,5 +53,8 @@
   position: absolute;
   top: 40%;
   left: 40%;
+  background-image: url("../images/imageedit_1_7112313590.png");
+  background-size: cover;
+  background-color: transparent;
 }
 /*# sourceMappingURL=style.css.map */

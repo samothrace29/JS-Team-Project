@@ -41,7 +41,7 @@ function touched(e) {
 
 
 function timerDuckGame() {
-    cube.style.backgroundColor = "yellow";
+    cube.style.backgroundColor = "green";
     cube.removeEventListener("click", touched);
     document.removeEventListener("keydown",moving);
     alert ("victory of the player at the keyboard");
