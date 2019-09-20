@@ -26,15 +26,17 @@ function touched(e) {
     const cube = document.querySelector("#target");
     cube.removeEventListener("click", touched);
     clearTimeout ( counterTimeOut );
-    
+    document.removeEventListener("keydown",moving);
     cube.style.backgroundColor = "red";
     alert("You win!");
+
 };
 
 
 function timerDuckGame() {
     cube.style.backgroundColor = "yellow";
     cube.removeEventListener("click", touched);
+    document.removeEventListener("keydown",moving);
     alert ("victory of the player at the keyboard");
 }
 
