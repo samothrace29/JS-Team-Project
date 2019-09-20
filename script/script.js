@@ -83,7 +83,7 @@ function start(e) {
     }
     
     const sectionScore = document.querySelector("#sectionScore");
-    sectionScore.style.display = "initial";
+    sectionScore.style.display = "block";
     
 }
 
@@ -94,6 +94,7 @@ function victory(whoWin)
         if ( listUsers.querySelector("h1").textContent == whoWin )
         {
             listUsers.querySelector("p").value += 1;
+        debugger;
         }
     }
     
