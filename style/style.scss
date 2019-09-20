@@ -5,6 +5,8 @@
     list-style: none;
     
 }
+
+
 #gameRunning{
     width: 800px;
     height: 600px;
@@ -43,11 +45,10 @@
     text-align: center;
 }
     
-
 #btnRestart{
+    display: flex;
     position: absolute;
-    top: 50%;
-    left: 50%;
+   align-items: center;
 }
     
 
@@ -58,7 +59,12 @@
     
 }
 
-
+#rstbt form{
+    display: flex;
+    justify-content:center ;
+    margin-top:35%;
+    
+}
 #target {
     
     height: 10%;
