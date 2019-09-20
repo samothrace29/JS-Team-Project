@@ -12,7 +12,10 @@ let counterTimeOut = 0;
 
 const playerPlusScore = document.querySelectorAll ("ul li");
 
-console.log(playerPlusScore);
+console.log("all player ! " + document.querySelector ("#playerDuck"));
+// console.log ( " Debugger " );
+//debugger;
+
 
 
 
@@ -35,8 +38,8 @@ function touched(e) {
     document.removeEventListener("keydown",moving);
     cube.style.backgroundColor = "red";
     alert("You win!");
-    victory("gun");
-
+    victory(playerPlusScore[1].querySelector("h1").textContent);
+    
 };
 
 
@@ -45,7 +48,7 @@ function timerDuckGame() {
     cube.removeEventListener("click", touched);
     document.removeEventListener("keydown",moving);
     alert ("victory of the player at the keyboard");
-    victory("duck");
+    victory(playerPlusScore[0].querySelector("h1").textContent);
 }
 
 function start(e) {
@@ -57,22 +60,31 @@ function start(e) {
     counterTimeOut = setTimeout(timerDuckGame, 5000);
     sectionCube.style.display = "block";
     //cube.style.display = "block";
+    playerPlusScore[0].querySelector("h1").textContent=document.getElementById ("playerDuck").value;
+    playerPlusScore[1].querySelector("h1").textContent=document.getElementById ("playerGun").value;
+    // document.querySelector ("#playerGun").value;
+    
+    console.log( document.querySelector ("#playerGun")) ;
+    
+    console.log(playerPlusScore);
 }
 
 function victory(whoWin)
 {
-    console.log( playerPlusScore[0].querySelector("h1").value );
+    //console.log( playerPlusScore[0].querySelector("h1").textContent );
     for (const listUsers of playerPlusScore) {
-        if ( listUsers.querySelector("h1").value == whoWin )
-            {
-                //listUsers.querySelector("p").value += 1;
+        if ( listUsers.querySelector("h1").textContent == whoWin )
+        {
+            // alert("upddate");
+
+                listUsers.querySelector("p").textContent = +listUsers.querySelector("p").textContent + 1;
             }
     }
     if (whoWin == "duck") {
-
+        
     }
     else{
-
+        
     }
-
+    
 }
