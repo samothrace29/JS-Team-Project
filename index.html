@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    
     <link rel="stylesheet" href="style/style.css">
     <title>JSTP</title>
 </head>
@@ -12,16 +13,17 @@
 <body>
 
     <body>
-        <section id="sectionGame">
+
+        <section id="sectionPlayerInput">
             <form action="blable.php" id="startTheGame">
                 <div>
-                    <p>Player Gun: </p>
-                    <input type="text" name="playerGun" id="playerGun">
+                    <h2>Player Gun: </h2>
+                    <input type="text" name="playerGun" id="playerGun" value="Gilles">
                 </div>
                 <div>
 
-                    <p>Player Duck: </p>
-                    <input type="text" name="playerDuck" id="playerDuck">
+                    <h2>Player Duck: </h2>
+                    <input type="text" name="playerDuck" id="playerDuck" value="Jerome">
                 </div>
                 <div>
 
@@ -29,7 +31,6 @@
                 </div>
             </form>
         </section>
-        
         <section id="sectionScore">
             <ul class="score">
                 <li>
@@ -42,22 +43,26 @@
                 </li>
             </ul>
         </section>
-
+        
         <section id="gameRunning">
-            <div id="target"></div>
-            <section id="sectionGame">
-                
-
-                <div id="rstbt">
-                <form action="#" id="formRestart">
-                    <input type="submit" value="restart" id="btnRestart">
-                </form>
+            <div class="target" >
+                <!-- <img src="" alt="" > -->
+                <p>user</p>
             </div>
+            
+            
+            
+            <section id="sectionGame"> 
+                <div id="rstbt"> 
+                    <form action="#" id="formRestart">
+                        <input type="submit" value="restart" id="btnRestart">
+                    </form>
+                </div>
             </section>
         </section>
 
 
-    
+
 
 
         <script src="script/script.js"></script>

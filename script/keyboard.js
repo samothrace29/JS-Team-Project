@@ -1,10 +1,12 @@
 
 //const cube = document.querySelector("#target");
 //document.addEventListener("keydown",moving);
-let topValue=40;
-let leftValue=40;
+//let topValue=40;
+//let leftValue=40;
 function moving(event){
-
+  // s.substring(0, s.length() - 1)
+topValue = +cubes[posCubeUser].style.top.substring (0,cubes[0].style.top.length -1);
+leftValue = +cubes[posCubeUser].style.left.substring (0,cubes[0].style.left.length -1);
 
  console.log(event.code);
  if (event.code==="ArrowDown"){
@@ -39,9 +41,12 @@ if(leftValue > 90){
 
 }
 
-console.log(topValue,leftValue)
-document.querySelector("#target").style.top = topValue + "%";
-document.querySelector("#target").style.left = leftValue + "%";
+console.log(topValue,leftValue);
+console.log( document );
+cubes[posCubeUser].style.top = topValue + "%";
+cubes[posCubeUser].style.left = leftValue + "%";
+ //document.querySelector(".target").style.top = topValue + "%";
+//document.querySelector(".target").style.left = leftValue + "%";
 
 
 }

@@ -7,6 +7,8 @@
 }
 
 
+
+
 #gameRunning{
     width: 800px;
     height: 600px;
@@ -19,8 +21,9 @@
     justify-content: space-between;
 }
 
-#startTheGame p{
+#sectionPlayerInput h2{
     padding: 10px 0;
+    padding-bottom: 0;
 }
 
 #startTheGame{
@@ -46,8 +49,8 @@
 }
 
 .score{
-   display: flex;
-     //  text-align: center;
+    display: flex;
+    //  text-align: center;
     justify-content: space-between;
     margin: 0 auto;
     /* top:-20%; */
@@ -57,30 +60,57 @@
     width: 20%;
     text-align: center;
 }
-    
+
 #btnRestart{
     display: flex;
-    position: absolute;
-   align-items: center;
+    //position: absolute;
+    //align-items: center;
 }
-#sectionGame{
+#sectionPlayerInput{
     display: relative;
-    height: 100%;
-
-
+    height: 100%;  
 }
 
-#rstbt form{
-    display: flex;
-    justify-content:center ;
-    padding-top:35%;
+#sectionPlayerInput input{
+padding : 10px ;
+margin: 15px 0  ;
+margin-top: 0;
+}
+#sectionPlayerInput [type="submit"]{
+background-color: blue;
+border-width: 0;
+color: white;
+border-radius: 20px;
+margin-top : 40px;
+padding: 20px;
+}
+
+
+
+#sectionGame {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    z-index: 1001;
+}
+#rstbt form input{
+    padding: 10px 30px;
+    background-color: green;
+    border: 0px;
+    border-radius: 20px;
+    font-size: 20px;
+
+ //   display: flex;
+    // justify-content:center ;
+//    padding-top:35%;
     
 }
 #rstbt{
-    margin: auto;
+  z-index: 1001;
 }
-#target {
-    
+.target {
     height: 10%;
     width: 10%;
     background-color: green;
@@ -91,10 +121,14 @@
     background-size: cover;
     background-color: transparent;
  }
+ .target p{
+     display : none;
+ }
 
 
 
 
  body{
-     background-image: url("../images/717507.jpg");
+      background-image: url("../images/717507.jpg");
+      cursor: url("../images/cursor.cur"),crosshair;
  }
