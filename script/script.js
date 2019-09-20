@@ -99,8 +99,13 @@ function victory(whoWin)
         }
     }
     
-    
+    restart();
     
     
     body.style.cursor = "auto";
+}
+function restart(){
+    btnRestart.style.display = "initial";
+    
+
 }
