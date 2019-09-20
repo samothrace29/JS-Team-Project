@@ -6,13 +6,15 @@ let topValue=40;
 function moving(event){
 
 
- console.log(event);
+ console.log(event.code);
  if (event.code==="ArrowDown"){
     topValue +=5;     
  }
  if (topValue == 90){
-     topvalue = 0;
- }
-document.querySelector("#target").stlye.top=topValue+"%";
+     topValue = 0;
+ 
+    }
+console.log()
+document.querySelector("#target").style.top = topValue + "%";
 
 }
