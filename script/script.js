@@ -60,13 +60,13 @@ function start(e) {
     counterTimeOut = setTimeout(timerDuckGame, 5000);
     sectionCube.style.display = "block";
     //cube.style.display = "block";
+    
+    // Changing the username in the game
     playerPlusScore[0].querySelector("h1").textContent=document.getElementById ("playerDuck").value;
     playerPlusScore[1].querySelector("h1").textContent=document.getElementById ("playerGun").value;
-    // document.querySelector ("#playerGun").value;
-    
-    console.log( document.querySelector ("#playerGun")) ;
-    
-    console.log(playerPlusScore);
+
+
+
 }
 
 function victory(whoWin)
@@ -75,8 +75,8 @@ function victory(whoWin)
     for (const listUsers of playerPlusScore) {
         if ( listUsers.querySelector("h1").textContent == whoWin )
         {
-            // alert("upddate");
-
+            
+                // adding 1 to the winner 
                 listUsers.querySelector("p").textContent = +listUsers.querySelector("p").textContent + 1;
             }
     }
