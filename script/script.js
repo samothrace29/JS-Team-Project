@@ -1,17 +1,22 @@
 
 // Create the click event on cube
 const cube = document.querySelector("#target");
-cube.addEventListener("click", touched);
+cube.style.display = "none";
+
+// Get value from the form
+const players = document.querySelector("#startTheGame");
+players.addEventListener("submit", start);
+
+
+
 
 // timeout is execute only one time, using setInterval for a recursive call
-setTimeout(timerDuckGame, 5000);
 
 // 
 
 const body = document.querySelector("body");
 
-console.log(body);
-body.style.cursor = "crosshair";
+//console.log(body);
 
 
 
@@ -28,4 +33,14 @@ function timerDuckGame() {
     cube.style.backgroundColor = "yellow";
     cube.removeEventListener("click", touched);
     alert ("victory of the player at the keyboard");
+}
+
+function start(e) {
+    e.preventDefault();
+    players.style.display = "none";
+    // create the click event on cube
+    cube.addEventListener("click", touched);
+    body.style.cursor = "crosshair";
+    setTimeout(timerDuckGame, 5000);
+    cube.style.display = "block";
 }
