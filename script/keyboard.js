@@ -1,12 +1,11 @@
-
-//const cube = document.querySelector("#target");
-//document.addEventListener("keydown",moving);
-//let topValue=40;
-//let leftValue=40;
 function moving(event){
-  // s.substring(0, s.length() - 1)
-topValue = +cubes[posCubeUser].style.top.substring (0,cubes[0].style.top.length -1);
-leftValue = +cubes[posCubeUser].style.left.substring (0,cubes[0].style.left.length -1);
+
+/* get the current value of top and left from posCubeUser */
+/* currently set to 0 for testing */
+/* TODO posCurUser will be set to another number when the player lost his 
+*/
+topValue = +cubes[posCubeUser].style.top.substring (0,cubes[posCubeUser].style.top.length -1);
+leftValue = +cubes[posCubeUser].style.left.substring (0,cubes[posCubeUser].style.left.length -1);
 
  console.log(event.code);
  if (event.code==="ArrowDown"){
