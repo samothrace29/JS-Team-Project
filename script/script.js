@@ -29,13 +29,19 @@ const body = document.querySelector("body");
 
 //console.log(body);
 
+function clearAll(){
+    cube.removeEventListener("click", touched);
+    document.removeEventListener("keydown",moving);
+    clearTimeout ( counterTimeOut );
 
+}
 
 function touched(e) {
-    const cube = document.querySelector("#target");
-    cube.removeEventListener("click", touched);
-    clearTimeout ( counterTimeOut );
-    document.removeEventListener("keydown",moving);
+    //const cube = document.querySelector("#target");
+    //cube.removeEventListener("click", touched);
+    //clearTimeout ( counterTimeOut );
+    //document.removeEventListener("keydown",moving);
+    clearAll();
     cube.style.backgroundColor = "red";
     alert("You win!");
     victory(playerPlusScore[1].querySelector("h1").textContent);
@@ -45,8 +51,6 @@ function touched(e) {
 
 function timerDuckGame() {
     cube.style.backgroundColor = "green";
-    cube.removeEventListener("click", touched);
-    document.removeEventListener("keydown",moving);
     alert ("victory of the player at the keyboard");
     victory(playerPlusScore[0].querySelector("h1").textContent);
 }
@@ -64,9 +68,15 @@ function start(e) {
     // Changing the username in the game
     playerPlusScore[0].querySelector("h1").textContent=document.getElementById ("playerDuck").value;
     playerPlusScore[1].querySelector("h1").textContent=document.getElementById ("playerGun").value;
+    
 
-
-
+    console.log("test : " + playerPlusScore[1].querySelector("h1").textContent + " ;");
+    console.log("test : " + playerPlusScore[0].querySelector("h1").textContent + " ;");
+    if ( playerPlusScore[0].querySelector("h1").textContent.length == 0 ) {
+        alert("alone version");
+    }
+    
+    
 }
 
 function victory(whoWin)
@@ -82,4 +92,5 @@ function victory(whoWin)
         
     
     
+    body.style.cursor = "auto";
 }
