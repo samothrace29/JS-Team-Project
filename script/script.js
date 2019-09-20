@@ -85,7 +85,7 @@ function victory(whoWin)
     for (const listUsers of playerPlusScore) {
         if ( listUsers.querySelector("h1").textContent == whoWin )
             {
-                //listUsers.querySelector("p").value += 1;
+                listUsers.querySelector("p").value += 1;
             }
     }
    
