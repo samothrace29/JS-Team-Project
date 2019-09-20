@@ -3,7 +3,7 @@ const cube = document.querySelector("#target");
 const sectionCube = document.querySelector("#gameRunning");
 sectionCube.style.display = "none";
 
-const btcRestart = document.query
+// const btcRestart = document.query
 
 
 
@@ -85,7 +85,7 @@ function start(e) {
     }
     
     const sectionScore = document.querySelector("#sectionScore");
-    sectionScore.style.display = "initial";
+    sectionScore.style.display = "block";
     
 }
 
