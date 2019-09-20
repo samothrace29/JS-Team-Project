@@ -78,11 +78,8 @@ function victory(whoWin)
                 //listUsers.querySelector("p").value += 1;
             }
     }
-    if (whoWin == "duck") {
+   
         
-    }
-    else{
-        
-    }
+    
     
 }
