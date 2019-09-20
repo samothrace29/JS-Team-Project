@@ -1,0 +1,18 @@
+#target {
+    transition-duration: 0.3s;
+    height: 200px;
+    width: 200px;
+    background-color: red;
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    animation-name: moveIt;
+    animation-duration: 15s;
+    animation-iteration-count: infinite;
+  }
+
+  #target:hover {
+    height: 50px;
+    width: 50px;
+  }
