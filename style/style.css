@@ -46,6 +46,12 @@
   padding-right: 700px;
 }
 
+#btnRestart {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+}
+
 #target {
   height: 10%;
   width: 10%;
