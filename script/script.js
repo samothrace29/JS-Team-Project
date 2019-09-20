@@ -10,6 +10,12 @@ players.addEventListener("submit", start);
 let counterTimeOut = 0;
 
 
+const playerPlusScore = document.querySelectorAll ("ul li");
+
+console.log(playerPlusScore);
+
+
+
 
 
 // timeout is execute only one time, using setInterval for a recursive call
@@ -29,6 +35,7 @@ function touched(e) {
     document.removeEventListener("keydown",moving);
     cube.style.backgroundColor = "red";
     alert("You win!");
+    victory("gun");
 
 };
 
@@ -38,6 +45,7 @@ function timerDuckGame() {
     cube.removeEventListener("click", touched);
     document.removeEventListener("keydown",moving);
     alert ("victory of the player at the keyboard");
+    victory("duck");
 }
 
 function start(e) {
@@ -49,4 +57,22 @@ function start(e) {
     counterTimeOut = setTimeout(timerDuckGame, 5000);
     sectionCube.style.display = "block";
     //cube.style.display = "block";
+}
+
+function victory(whoWin)
+{
+    console.log( playerPlusScore[0].querySelector("h1").value );
+    for (const listUsers of playerPlusScore) {
+        if ( listUsers.querySelector("h1").value == whoWin )
+            {
+                //listUsers.querySelector("p").value += 1;
+            }
+    }
+    if (whoWin == "duck") {
+
+    }
+    else{
+
+    }
+
 }
