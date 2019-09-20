@@ -53,6 +53,7 @@ function timerDuckGame() {
     cube.style.backgroundColor = "green";
     alert ("victory of the player at the keyboard");
     victory(playerPlusScore[0].querySelector("h1").textContent);
+    clearAll();
 }
 
 function start(e) {
