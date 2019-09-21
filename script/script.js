@@ -1,140 +1,7 @@
 /* get all targets */
 let targets = document.querySelectorAll(".target");
 
-oneComputer = {
-    type: "computer",
-    posTop: Math.random()*500,
-    posLeft: Math.random()*500,
-    vitX : 0,
-    vitY : 0,
-    accX : 0,
-    accY : 0,
-    puissance : 0.3,
-    coeufFriction : 0.80
-}
-/*var flagUp = false;
-var flagDown = false;
-var flagLeft = false;
-var flagRight = false;
-*/
-// var flagSpace;
 
-/*
-setInterval(function(){
-	//attribution des acceleration
-	//console.log(flagDown);
-	if(flagUp)
-		accY = accY - puissance;
-	if(flagDown)
-		accY = accY + puissance;
-	if(flagLeft)
-		accX = accX - puissance;
-	if(flagRight)
-		accX = accX + puissance;
-
-	//freinage
-	accY = accY*0.95;
-	accX = accX*0.95;
-	
-	//changement de la vitesse
-	vitY = (vitY + accY)*coeufFriction;
-	vitX = (vitX + accX)*coeufFriction;
-	
-	posY = posY + vitY;
-	posX = posX + vitX;
-	
-	
-	//bouclage
-	if(posY>1000){
-		posY = 0;
-	}
-	if(posY<0){
-		posY = 1000;
-	}
-	if(posX>1000){
-		posX = 0;
-	}
-	if(posX<0){
-		posX = 1000;
-	}
-	
-	//affectation
-	$(".player").css({
-				top: posY+"px", 
-				left : posX+"px", 
-		});
-	
-}, 1000/60)
-*/
-
-/*
-$( document ).on( "keydown", function( event ) {
-	//changement de l'accelération
-  switch( event.keyCode) {
-    case 40:
-			flagDown = true
-		break;
-	}
-	switch( event.keyCode) {
-    case 38:
-			flagUp = true
-		break;
-	}
-	switch( event.keyCode) {
-    case 39:
-			flagRight = true
-		break;
-	}
-	switch( event.keyCode) {
-    case 37:
-			flagLeft = true
-		break;
-	}
-	switch( event.keyCode) {
-    case 32:
-				$(".player").stop().animate({
-					height:"10px", 
-					width : "10px"
-				},100)
-		break;
-	}
-
-});
-*/
-/*
-$( document ).on( "keyup", function(){
-	console.log(event.keyCode);
-	 switch( event.keyCode) {
-    case 40:
-			flagDown = false
-		break;
-	}
-	switch( event.keyCode) {
-    case 38:
-			flagUp = false
-		break;
-	}
-	switch( event.keyCode) {
-    case 39:
-			flagRight = false
-		break;
-	}
-	switch( event.keyCode) {
-    case 37:
-			flagLeft = false
-		break;
-	}
-	switch( event.keyCode) {
-    case 32:
-			$(".player").stop().animate({
-					height:"100px", 
-					width : "100px"
-				},100)
-		break;
-	}
-})
-}
-*/
 
 // current position of the user in the list of target
 // TODO : if not set ( < 0 ) , run computer alone
@@ -161,9 +28,8 @@ const playAlone = false;
 
 
 // creating 3 other target
-for (let i = 0; i < 3; i++) {
-    createComputer();
-}
+debugger;
+
 
 
 
@@ -213,14 +79,7 @@ function clearAll() {
 
 }
 
-function createComputer() {
-    // debugger;
-    const parentComputer = document.querySelector("#gameRunning");
-    const computer = document.querySelector(".target").cloneNode();
-    parentComputer.append(computer);
-    console.log("Create computer :")
 
-}
 
 
 /* function call when user with mouse touch the target */
@@ -247,6 +106,9 @@ function timerDuckGame() {
 
 function start(e) {
     e.preventDefault();
+    for (let i = 0; i < 3; i++) {
+        createComputer();
+    }
 
     btnRestart.style.display = "none";
     players.style.display = "none";
@@ -325,32 +187,3 @@ function restart() {
 
 
 
-/* sound Effect */
-function sound(src) {
-    this.sound = document.createElement("audio");
-    this.sound.src = src;
-    this.sound.setAttribute("preload", "auto");
-    this.sound.setAttribute("controls", "none");
-    this.sound.style.display = "none";
-    document.body.appendChild(this.sound);
-    this.play = function () {
-        this.sound.play();
-    }
-    this.stop = function () {
-        this.sound.pause();
-    }
-}
-
-
-function playGunSound() {
-    let myMusic = new sound("./sound/gun.mp3");
-    myMusic.play();
-}
-function killedSound() {
-    let myMusic = new sound("./sound/killedkenny.mp3");
-    myMusic.play();
-}
-function imGoodSound() {
-    let myMusic = new sound("./sound/imGood.mp3");
-    myMusic.play();
-}
