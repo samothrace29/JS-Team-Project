@@ -1,7 +1,5 @@
 /* get all targets */
-let targets = document.querySelectorAll(".target");
-
-
+let duckTarget = document.querySelector(".target");
 
 // current position of the user in the list of target
 // TODO : if not set ( < 0 ) , run computer alone
@@ -26,21 +24,11 @@ const delaiGame = 5000;
 // TODO : target will move automatically when set to true;
 const playAlone = false;
 
-
-// creating 3 other target
-debugger;
-
-
-
-
-
-
-
 // Get value from the form ( input username screen )
-const players = document.querySelector("#startTheGame");
+const playersInput = document.querySelector("#startTheGame");
 
 // set the event on the submit form, run start when you submit your username
-players.addEventListener("submit", start);
+playersInput.addEventListener("submit", start);
 
 
 // variable assigned by setTimeout and used for clearTimeout
@@ -56,25 +44,19 @@ const playerPlusScore = document.querySelectorAll("ul li");
 // variable used to access directly the body and avoid a lot of call later for cursor ...
 const body = document.querySelector("body");
 
-
-
-
-
-
-
-
-
 const formRestart = document.querySelector("#formRestart");
 formRestart.addEventListener("submit", start);
 
-function clearAll() {
-    clearTimeout(counterTimeOut);
-    //  const listOfCube = document.querySelector(".target");
-    for (const cube of targets) {
-        cube.removeEventListener("click", touched);
 
+// remove all event
+function clearAllEvents() {
+    clearTimeout(counterTimeOut);
+
+    duckTarget.removeEventListener("click", touched);
+
+    if (!playAlone) {
+        document.removeEventListener("keydown", moving);
     }
-    document.removeEventListener("keydown", moving);
     body.removeEventListener("click", playGunSound);
 
 }
@@ -84,7 +66,7 @@ function clearAll() {
 
 /* function call when user with mouse touch the target */
 function touched(e) {
-    clearAll();
+    clearAllEvents();
     e.path[0].style.border = "5px solid red";
     victory(playerPlusScore[1].querySelector("h1").textContent);
     killedSound();
@@ -93,66 +75,80 @@ function touched(e) {
 
 /* timeout of target , using the variable delaiGame */
 function timerDuckGame() {
-    for (const cube of targets) {
-        cube.style.border = "5px solid green";
-        //cube.style.backgroundColor = "green";
+    // set green to user duck
+    duckTarget.style.border = "5px solid green";
 
-    }
+    // TODO : set green to computer 
     imGoodSound();
-    clearAll();
+    clearAllEvents();
     victory(playerPlusScore[0].querySelector("h1").textContent);
-    //clearAll();
 }
 
 function start(e) {
     e.preventDefault();
-    for (let i = 0; i < 3; i++) {
-        createComputer();
-    }
 
+    // removing all previous computer
+    removeAllComputer();
+
+    
+    
     btnRestart.style.display = "none";
-    players.style.display = "none";
-    targets = document.querySelectorAll(".target");
+    playersInput.style.display = "none";
+    
+    // Changing the username in the game
+    // Adding also the necessary computer in the game
+    if (document.getElementById("playerDuck").value.length == 0) {
+        playerPlusScore[0].querySelector("h1").textContent = "COMPUTER";
+        posCubeUser = -1;
+        
+        // removing the user to put a computer, as no imput
+        duckTarget = document.querySelector(".target");
+        duckTarget.remove();
+        createComputer ();
+    } else {
+        
+        playerPlusScore[0].querySelector("h1").textContent = document.getElementById("playerDuck").value;
+        
+        // get the duckTarget
+        duckTarget = document.querySelector(".target");
+
+        duckTarget.style.border = "5px solid transparent";
+        
+        duckTarget.style.top = Math.floor(Math.random() * Math.floor(90)) + "%";
+        duckTarget.style.left = Math.floor(Math.random() * Math.floor(90)) + "%";
+        console.log("Current position : " + duckTarget.style.top + ":" + duckTarget.style.left);
+        
+        duckTarget.style.backgroundColor = "transparent";
+        duckTarget.addEventListener("click", touched);
+        
+        document.addEventListener("keydown", moving);
+    }
+    playerPlusScore[1].querySelector("h1").textContent = document.getElementById("playerGun").value;
+    
+    
+    // create all computer
+  //  for (let i = 0; i < 3; i++) {
+   //     createComputer();
+   // }
+    
+    // create sound on click event on body => gun sound
     body.addEventListener("click", playGunSound);
-
-
-    for (const cube of targets) {
-        cube.style.border = "5px solid transparent";
-
-        cube.style.top = Math.floor(Math.random() * Math.floor(90)) + "%";
-        cube.style.left = Math.floor(Math.random() * Math.floor(90)) + "%";
-        console.log("Current position : " + cube.style.top + ":" + cube.style.left);
-    }
-
-
-
-
-    // create the click event on cube
-    for (const cube of targets) {
-        cube.style.backgroundColor = "transparent";
-        cube.addEventListener("click", touched);
-    }
-    document.addEventListener("keydown", moving);
+    
+    
+    
+    
     body.style.cursor = "url('./images/cursor.cur'),crosshair";
     //body.style.cursor.
     counterTimeOut = setTimeout(timerDuckGame, delaiGame);
     sectionCube.style.display = "block";
     //cube.style.display = "block";
 
-    // Changing the username in the game
-    playerPlusScore[0].querySelector("h1").textContent = document.getElementById("playerDuck").value;
-    playerPlusScore[1].querySelector("h1").textContent = document.getElementById("playerGun").value;
 
-
-    // console.log("test : " + playerPlusScore[1].querySelector("h1").textContent + " ;");
-    //console.log("test : " + playerPlusScore[0].querySelector("h1").textContent + " ;");
-    if (playerPlusScore[0].querySelector("h1").textContent.length == 0) {
-        // alert("alone version");
-    }
 
     const sectionScore = document.querySelector("#sectionScore");
     sectionScore.style.display = "block";
 
+    startComputerMoving();
 }
 
 function victory(whoWin) {
@@ -177,12 +173,14 @@ function victory(whoWin) {
     body.style.cursor = "auto";
 }
 function restart() {
+    // show the button restart
     btnRestart.style.display = "initial";
+
     // e.preventDefault();
     const restartbtn = document.querySelector("#formRestart");
-    restartbtn.addEventListener("submit", start);
 
-    //console.log(restartbtn)
+    // add an event on the button restart
+    restartbtn.addEventListener("submit", start);
 }
 
 

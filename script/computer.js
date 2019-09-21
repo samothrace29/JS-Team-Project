@@ -14,7 +14,7 @@
 };*/
 
 
-let listOfComputer=new Array();
+let listOfComputerActif=new Array();
 
 /*var flagUp = false;
 var flagDown = false;
@@ -140,22 +140,24 @@ $( document ).on( "keydown", function( event ) {
 }
 */
 
+
+// this function will create a computer, and add it in the listOfComputerActif
 function createComputer() {
-    debugger;
-    const parentComputer = document.querySelector("#gameRunning");
-    const computer = document.querySelector(".target").cloneNode();
-    parentComputer.append(computer);
-    
-    
-    
-    
-    
-    
+    //const parentComputer = document.querySelector("#gameRunning");
+    //const computer = document.querySelector(".target").cloneNode();
+    //parentComputer.append(computer);
     
     let oneComputer = new Array();
     oneComputer.type= "computer";       
-    oneComputer.posTop= Math.random()*500;
-    oneComputer.posLeft= Math.random()*500;
+    oneComputer.posTop= Math.random()*1000;
+    oneComputer.posLeft= Math.random()*1000;
+    oneComputer.width = "40px";
+    oneComputer.height = "40px";
+    oneComputer.backgroundColor = "transparent";
+    oneComputer.img  = 
+    oneComputer.actif = true;
+    oneComputer.setInterval = null;
+
     oneComputer.vitX = 0;
     oneComputer.vitY = 0;
     oneComputer.accX = 0;
@@ -163,9 +165,61 @@ function createComputer() {
     oneComputer.puissance = 0.3;
     oneComputer.coeufFriction = 0.8;
     
-    debugger;
+    //debugger;
     
-    listOfComputer.push( oneComputer );
+    listOfComputerActif.push( oneComputer );
     console.log("computer Created : ");
-    console.log(listOfComputer);
+    console.log(listOfComputerActif);
+}
+
+function startComputerMoving(){
+    for (const computer of listOfComputerActif) {
+        computer.actif = true;
+        computer.setInterval = setInterval ( computerMoving , 1000 );
+        console.log( "Activity of computer : " +  computer.actif);
+    }
+    console.log( "Starting computer Moving : ");
+}
+function stopComputerMoving(){
+    
+    for (const computer of listOfComputerActif) {
+        computer.actif = true;
+        clearInterval ( computer.setInterval );
+        console.log( "Activity of computer : " + computer.actif);
+    }
+    console.log( "Stopping computer Moving : ");
+    
+}
+function removeComputerKilled(){
+    for (const computer of listOfComputerActif) {
+        if ( computer.actif ) {
+
+            console.log( "remove this computer : " + computer.actif);
+        }
+    }
+    
+}
+function removeAllComputer(){
+    const parentComputer = document.querySelector("#gameRunning");
+    while ( true ) {
+        const aComputer = document.querySelector(".targetComputer");
+
+        // if we found a computer, remove it
+        if ( aComputer ) {
+            parentComputer.remove(aComputer);
+            continue;
+        }
+        break;
+    }
+    
+}
+
+
+function computerMoving(){
+    for (const computer of listOfComputerActif) {
+        if ( computer.actif ) {
+            console.log( "Activity of computer : " + computer.actif);
+        }
+    }
+    
 }
