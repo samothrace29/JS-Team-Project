@@ -1,5 +1,140 @@
 /* get all targets */
-let cubes = document.querySelectorAll(".target");
+let targets = document.querySelectorAll(".target");
+
+oneComputer = {
+    type: "computer",
+    posTop: Math.random()*500,
+    posLeft: Math.random()*500,
+    vitX : 0,
+    vitY : 0,
+    accX : 0,
+    accY : 0,
+    puissance : 0.3,
+    coeufFriction : 0.80
+}
+/*var flagUp = false;
+var flagDown = false;
+var flagLeft = false;
+var flagRight = false;
+*/
+// var flagSpace;
+
+/*
+setInterval(function(){
+	//attribution des acceleration
+	//console.log(flagDown);
+	if(flagUp)
+		accY = accY - puissance;
+	if(flagDown)
+		accY = accY + puissance;
+	if(flagLeft)
+		accX = accX - puissance;
+	if(flagRight)
+		accX = accX + puissance;
+
+	//freinage
+	accY = accY*0.95;
+	accX = accX*0.95;
+	
+	//changement de la vitesse
+	vitY = (vitY + accY)*coeufFriction;
+	vitX = (vitX + accX)*coeufFriction;
+	
+	posY = posY + vitY;
+	posX = posX + vitX;
+	
+	
+	//bouclage
+	if(posY>1000){
+		posY = 0;
+	}
+	if(posY<0){
+		posY = 1000;
+	}
+	if(posX>1000){
+		posX = 0;
+	}
+	if(posX<0){
+		posX = 1000;
+	}
+	
+	//affectation
+	$(".player").css({
+				top: posY+"px", 
+				left : posX+"px", 
+		});
+	
+}, 1000/60)
+*/
+
+/*
+$( document ).on( "keydown", function( event ) {
+	//changement de l'accelération
+  switch( event.keyCode) {
+    case 40:
+			flagDown = true
+		break;
+	}
+	switch( event.keyCode) {
+    case 38:
+			flagUp = true
+		break;
+	}
+	switch( event.keyCode) {
+    case 39:
+			flagRight = true
+		break;
+	}
+	switch( event.keyCode) {
+    case 37:
+			flagLeft = true
+		break;
+	}
+	switch( event.keyCode) {
+    case 32:
+				$(".player").stop().animate({
+					height:"10px", 
+					width : "10px"
+				},100)
+		break;
+	}
+
+});
+*/
+/*
+$( document ).on( "keyup", function(){
+	console.log(event.keyCode);
+	 switch( event.keyCode) {
+    case 40:
+			flagDown = false
+		break;
+	}
+	switch( event.keyCode) {
+    case 38:
+			flagUp = false
+		break;
+	}
+	switch( event.keyCode) {
+    case 39:
+			flagRight = false
+		break;
+	}
+	switch( event.keyCode) {
+    case 37:
+			flagLeft = false
+		break;
+	}
+	switch( event.keyCode) {
+    case 32:
+			$(".player").stop().animate({
+					height:"100px", 
+					width : "100px"
+				},100)
+		break;
+	}
+})
+}
+*/
 
 // current position of the user in the list of target
 // TODO : if not set ( < 0 ) , run computer alone
@@ -69,7 +204,7 @@ formRestart.addEventListener("submit", start);
 function clearAll() {
     clearTimeout(counterTimeOut);
     //  const listOfCube = document.querySelector(".target");
-    for (const cube of cubes) {
+    for (const cube of targets) {
         cube.removeEventListener("click", touched);
 
     }
@@ -99,7 +234,7 @@ function touched(e) {
 
 /* timeout of target , using the variable delaiGame */
 function timerDuckGame() {
-    for (const cube of cubes) {
+    for (const cube of targets) {
         cube.style.border = "5px solid green";
         //cube.style.backgroundColor = "green";
 
@@ -115,11 +250,11 @@ function start(e) {
 
     btnRestart.style.display = "none";
     players.style.display = "none";
-    cubes = document.querySelectorAll(".target");
+    targets = document.querySelectorAll(".target");
     body.addEventListener("click", playGunSound);
 
 
-    for (const cube of cubes) {
+    for (const cube of targets) {
         cube.style.border = "5px solid transparent";
 
         cube.style.top = Math.floor(Math.random() * Math.floor(90)) + "%";
@@ -131,12 +266,12 @@ function start(e) {
 
 
     // create the click event on cube
-    for (const cube of cubes) {
+    for (const cube of targets) {
         cube.style.backgroundColor = "transparent";
         cube.addEventListener("click", touched);
     }
     document.addEventListener("keydown", moving);
-    body.style.cursor = "url('../images/cursor.cur'),crosshair";
+    body.style.cursor = "url('./images/cursor.cur'),crosshair";
     //body.style.cursor.
     counterTimeOut = setTimeout(timerDuckGame, delaiGame);
     sectionCube.style.display = "block";
@@ -208,14 +343,14 @@ function sound(src) {
 
 
 function playGunSound() {
-    let myMusic = new sound("../sound/gun.mp3");
+    let myMusic = new sound("./sound/gun.mp3");
     myMusic.play();
 }
 function killedSound() {
-    let myMusic = new sound("../sound/killedkenny.mp3");
+    let myMusic = new sound("./sound/killedkenny.mp3");
     myMusic.play();
 }
 function imGoodSound() {
-    let myMusic = new sound("../sound/imGood.mp3");
+    let myMusic = new sound("./sound/imGood.mp3");
     myMusic.play();
 }

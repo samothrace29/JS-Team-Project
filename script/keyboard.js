@@ -4,8 +4,8 @@ function moving(event){
 /* currently set to 0 for testing */
 /* TODO posCurUser will be set to another number when the player lost his 
 */
-topValue = +cubes[posCubeUser].style.top.substring (0,cubes[posCubeUser].style.top.length -1);
-leftValue = +cubes[posCubeUser].style.left.substring (0,cubes[posCubeUser].style.left.length -1);
+topValue = +targets[posCubeUser].style.top.substring (0,targets[posCubeUser].style.top.length -1);
+leftValue = +targets[posCubeUser].style.left.substring (0,targets[posCubeUser].style.left.length -1);
 
  console.log(event.code);
  //debugger;
@@ -48,8 +48,8 @@ if(leftValue > 90){
 
 console.log(topValue,leftValue);
 console.log( document );
-cubes[posCubeUser].style.top = topValue + "%";
-cubes[posCubeUser].style.left = leftValue + "%";
+targets[posCubeUser].style.top = topValue + "%";
+targets[posCubeUser].style.left = leftValue + "%";
  //document.querySelector(".target").style.top = topValue + "%";
 //document.querySelector(".target").style.left = leftValue + "%";
 
