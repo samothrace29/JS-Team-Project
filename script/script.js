@@ -1,7 +1,10 @@
 /* get all targets */
+
 let duckTarget = document.querySelector(".target");
 let duckRunning = null;
 let movingDuck = new Array();
+let currentTimer = 30;
+let timerInterval = null;
 
 // current position of the user in the list of target
 // TODO : if not set ( < 0 ) , run computer alone
@@ -21,7 +24,7 @@ btnRestart.style.display = "none";
 let endOfGame = false;
 
 // number of second set for playing one part of the game , for test 5s ( 5000 ) else 30000
-const delaiGame = 5000;
+const delaiGame = 30000;
 
 // TODO : target will move automatically when set to true;
 const playAlone = false;
@@ -52,6 +55,8 @@ formRestart.addEventListener("submit", start);
 
 // remove all event
 function clearAllEvents() {
+    if (timerInterval)
+    clearInterval ( timerInterval );
     // clear timeout duck win
     clearTimeout(counterTimeOut);
     document.querySelector("#gameRunning").onmousemove = null;
@@ -106,7 +111,7 @@ function touched(e) {
     clearAllEvents();
     e.path[0].style.border = "5px solid red";
     e.path[0].style.borderRadius = "50%";
-    victory(playerPlusScore[1].querySelector("h1").textContent);
+    victory(playerPlusScore[2].querySelector("h1").textContent);
     killedSound();
 
 };
@@ -198,14 +203,18 @@ function start(e) {
     }
     createComputer();
     createComputer();
-    //createComputer();
-    //createComputer();
-    //createComputer();
+    createComputer();
+    createComputer();
+    createComputer();
     //createComputer();
 
     // set the username on screen
-    playerPlusScore[1].querySelector("h1").textContent = document.getElementById("playerGun").value;
+    playerPlusScore[2].querySelector("h1").textContent = document.getElementById("playerGun").value;
 
+    currentTimer = 30;
+    playerPlusScore[1].querySelector("h1").textContent = "Timer";
+    timerInterval =setInterval (timer, 1000);
+    
 
     document.querySelector("#gameRunning").onmousemove = computerMoving;
 
@@ -247,6 +256,15 @@ function victory(whoWin) {
             if (curPlayerCounter == 5) {
                 alert("END OF GAME : " + whoWin + " is the winner");
                 let endOfGame = true;
+                removeAllComputer();
+                duckTarget = document.querySelector(".target");
+                if (duckTarget) {
+                    duckTarget.remove();       
+                }
+                
+
+                copyright();
+
             }
             else {
                 restart();
@@ -291,4 +309,51 @@ function initialiseDuck (className){
     newDuck.name = "." + className;
 
     return newDuck;
+}
+
+
+function copyright()
+{
+    const copyr = document.querySelector("#copyright");
+
+   copyr.style.display = "flex";
+   copyr.style.justifyContent="center";
+   copyr.style.alignItems = "center";
+   copyr.style.flexDirection = "column";
+   copyr.style.color = "white";
+   
+
+   const articles = copyr.querySelectorAll("article");
+   for (const article of articles) {
+       article.style.margin ="auto";
+       article.style.padding = "15px";
+       
+       const h2s=article.querySelectorAll("h2")
+       for (const h2 of h2s) {
+           h2.style.padding = "10px";
+           h2.style.textAlign = "center";
+           h2.style.textDecoration = "underline";
+           //h2.style.textTransform = "underline";
+           h2.style.fontSize = "25px";
+           
+           
+        }
+        const h3s=article.querySelectorAll("h3")
+        for (const h3 of h3s) {
+            h3.style.padding = "5px";
+            h3.style.fontSize = "20px";
+            h3.style.textAlign = "center";
+        //    h3.style.textDecoration = "underline";
+            
+        }
+   }
+    //copyr.z-index = 1001;
+    //copyr.style.z = 1001;
+
+
+}
+
+function timer() {
+    currentTimer -= 1;
+    playerPlusScore[1].querySelector("p").textContent = currentTimer;
 }

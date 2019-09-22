@@ -186,7 +186,7 @@ function computerMoving(event) {
             console.log("duckY : " + duckY);
             console.log("diffX : " + diffX);
             console.log("diffY : " + diffY);
-  */          if ((diffX < 50) && (diffY < 50)) {
+  */          if ((diffX < 150) && (diffY < 150)) {
                 console.log("Moving Computer : " + computer.style.movingDuck.name);
                 computer.style.movingDuck.flagUp = flagUp;
                 computer.style.movingDuck.flagDown = flagDown;
