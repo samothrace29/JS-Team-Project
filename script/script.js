@@ -1,5 +1,7 @@
 /* get all targets */
 let duckTarget = document.querySelector(".target");
+let duckRunning = null;
+let movingDuck = new Array();
 
 // current position of the user in the list of target
 // TODO : if not set ( < 0 ) , run computer alone
@@ -50,23 +52,49 @@ formRestart.addEventListener("submit", start);
 
 // remove all event
 function clearAllEvents() {
+    // clear timeout duck win
     clearTimeout(counterTimeOut);
+    document.querySelector("#gameRunning").onmousemove = null;
 
+    // remove click event on duck =
     if (duckTarget) {
         duckTarget.removeEventListener("click", touched);
     }
+
+    // remove click event on all
     for (const computer of listOfComputerActif) {
         computer.removeEventListener("click", touched);
         // computer.("click".touched);
     }
-    
+
+
     stopComputerMoving();
 
 
+
     if (!playAlone) {
-        document.removeEventListener("keydown", moving);
+        // remove event Keyboard when 2 players
+        document.removeEventListener("keydown", startMoving);
+        document.removeEventListener("keyup", stopMoving);
+
+        // clearing the interval
+        if (duckRunning)
+            clearInterval(duckRunning);
+
+        movingDuck.flagUp = false;
+        movingDuck.flagDown = false;
+        movingDuck.flagLeft = false;
+        movingDuck.flagRight = false;
+        movingDuck.vitX = 0;
+        movingDuck.vitY = 0;
+        movingDuck.accX = 0;
+        movingDuck.accY = 0;
+
+
     }
     body.removeEventListener("click", playGunSound);
+
+
 
 }
 
@@ -108,8 +136,6 @@ function start(e) {
     // removing all previous computer
     removeAllComputer();
 
-
-
     btnRestart.style.display = "none";
     playersInput.style.display = "none";
 
@@ -133,21 +159,55 @@ function start(e) {
         // get the duckTarget
         duckTarget = document.querySelector(".target");
 
+
         duckTarget.style.border = "5px solid transparent";
 
-        duckTarget.style.top = Math.floor(Math.random() * Math.floor(90)) + "%";
-        duckTarget.style.left = Math.floor(Math.random() * Math.floor(90)) + "%";
+        duckTarget.style.movingDuck = initialiseDuck("target");
+
+        // posX: +duckTarget.style.left.substring(0, duckTarget.style.left.length - 2),
+        // posY: +duckTarget.style.top.substring(0, duckTarget.style.top.length - 2)
+
+        duckTarget.style.movingDuck.posX = Math.floor(Math.random() * (800 - 60));;
+        duckTarget.style.movingDuck.posY = Math.floor(Math.random() * (600 - 80));;
+        duckTarget.style.top  = duckTarget.style.movingDuck.posY + "px";
+        duckTarget.style.left = duckTarget.style.movingDuck.posX + "px";
+
         console.log("Current position : " + duckTarget.style.top + ":" + duckTarget.style.left);
 
         duckTarget.style.backgroundColor = "transparent";
         duckTarget.addEventListener("click", touched);
 
-        document.addEventListener("keydown", moving);
+
+
+        document.addEventListener("keydown", startMoving);
+        document.addEventListener("keyup", stopMoving);
+
+        //document.setInterval()
+
+        duckRunning = setInterval( movingTarget , 1000 / 60, duckTarget ); 
+        
+        
+
+
+
+
+
+
+
+
     }
     createComputer();
     createComputer();
+    //createComputer();
+    //createComputer();
+    //createComputer();
+    //createComputer();
+
+    // set the username on screen
     playerPlusScore[1].querySelector("h1").textContent = document.getElementById("playerGun").value;
 
+
+    document.querySelector("#gameRunning").onmousemove = computerMoving;
 
     // create all computer
     //  for (let i = 0; i < 3; i++) {
@@ -174,6 +234,7 @@ function start(e) {
     startComputerMoving();
 }
 
+
 function victory(whoWin) {
 
     for (const listUsers of playerPlusScore) {
@@ -189,7 +250,7 @@ function victory(whoWin) {
             }
             else {
                 restart();
-
+                
             }
         }
     }
@@ -198,13 +259,36 @@ function victory(whoWin) {
 function restart() {
     // show the button restart
     btnRestart.style.display = "initial";
-
+    
     // e.preventDefault();
     const restartbtn = document.querySelector("#formRestart");
-
+    
     // add an event on the button restart
     restartbtn.addEventListener("submit", start);
 }
 
 
+// initialise an object duck and return the default value, with the name
+// as parameter, to distinguest all computer and player
+function initialiseDuck (className){
+    let newDuck = new Array();
 
+    newDuck.puissance = 0.3;
+    newDuck.coeufFriction = 0.5;
+
+    newDuck.flagUp = false;
+    newDuck.flagDown = false;
+    newDuck.flagLeft = false;
+    newDuck.flagRight = false;
+
+    newDuck.vitX = 0;
+    newDuck.vitY = 0;
+
+    newDuck.accX = 0;
+    newDuck.accY = 0;
+    newDuck.posX = 0;
+    newDuck.posY = 0;
+    newDuck.name = "." + className;
+
+    return newDuck;
+}
