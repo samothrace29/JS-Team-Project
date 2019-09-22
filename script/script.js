@@ -6,8 +6,11 @@ let movingDuck = new Array();
 let currentTimer = 30;
 let timerInterval = null;
 let scoreLeft = 0;
-let scoreMiddle = 1;
-let scoreRight = 2;
+let scoreTimer = 1;
+let scoreMunition = 2 ;
+let scoreRight = 3;
+let maxMunition = 6;
+let curMunition = 0;
 
 // current position of the user in the list of target
 // TODO : if not set ( < 0 ) , run computer alone
@@ -172,9 +175,6 @@ function start(e) {
 
         duckTarget.style.movingDuck = initialiseDuck("target");
 
-        // posX: +duckTarget.style.left.substring(0, duckTarget.style.left.length - 2),
-        // posY: +duckTarget.style.top.substring(0, duckTarget.style.top.length - 2)
-
         duckTarget.style.movingDuck.posX = Math.floor(Math.random() * (800 - 60));;
         duckTarget.style.movingDuck.posY = Math.floor(Math.random() * (600 - 80));;
         duckTarget.style.top = duckTarget.style.movingDuck.posY + "px";
@@ -194,15 +194,6 @@ function start(e) {
 
         duckRunning = setInterval(movingTarget, 1000 / 60, duckTarget);
 
-
-
-
-
-
-
-
-
-
     }
     createComputer();
     createComputer();
@@ -214,10 +205,17 @@ function start(e) {
     // set the username on screen
     playerPlusScore[scoreRight].querySelector("h1").textContent = document.getElementById("playerGun").value;
 
+
+    // set the time on
     currentTimer = 30;
-    playerPlusScore[scoreMiddle].querySelector("h1").textContent = "Timer";
-    playerPlusScore[scoreMiddle].querySelector("p").textContent = currentTimer;
+    playerPlusScore[scoreTimer].querySelector("h1").textContent = "Timer";
+    playerPlusScore[scoreTimer].querySelector("p").textContent = currentTimer;
     timerInterval = setInterval(timer, 1000);
+
+    // set munition on and his number of
+    // maxMunition = 6;
+    curMunition = maxMunition;
+    playerPlusScore[scoreMunition].querySelector("p").textContent = curMunition + " / " + maxMunition;
 
 
     document.querySelector("#gameRunning").onmousemove = computerMoving;
@@ -232,8 +230,9 @@ function start(e) {
 
 
 
+debugger;
+    body.style.cursor = "url(./images/cursor.cur),crosshair";
 
-    body.style.cursor = "url('./images/cursor.cur'),crosshair";
     //body.style.cursor.
     counterTimeOut = setTimeout(timerDuckGame, delaiGame);
     sectionCube.style.display = "block";
@@ -358,5 +357,5 @@ function copyright() {
 
 function timer() {
     currentTimer -= 1;
-    playerPlusScore[scoreMiddle].querySelector("p").textContent = currentTimer;
+    playerPlusScore[scoreTimer].querySelector("p").textContent = currentTimer;
 }

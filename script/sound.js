@@ -17,6 +17,12 @@ function sound(src) {
 
 function playGunSound() {
     let myMusic = new sound("./sound/gun.mp3");
+    curMunition--;
+    if (curMunition == 0) {
+        body.removeEventListener("click", playGunSound);
+        timerDuckGame();
+    }
+    playerPlusScore[scoreMunition].querySelector("p").textContent = curMunition + " / " + maxMunition;
     myMusic.play();
 }
 function killedSound() {
