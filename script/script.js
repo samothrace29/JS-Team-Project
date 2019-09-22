@@ -5,6 +5,9 @@ let duckRunning = null;
 let movingDuck = new Array();
 let currentTimer = 30;
 let timerInterval = null;
+let scoreLeft = 0;
+let scoreMiddle = 1;
+let scoreRight = 2;
 
 // current position of the user in the list of target
 // TODO : if not set ( < 0 ) , run computer alone
@@ -56,7 +59,7 @@ formRestart.addEventListener("submit", start);
 // remove all event
 function clearAllEvents() {
     if (timerInterval)
-    clearInterval ( timerInterval );
+        clearInterval(timerInterval);
     // clear timeout duck win
     clearTimeout(counterTimeOut);
     document.querySelector("#gameRunning").onmousemove = null;
@@ -111,7 +114,7 @@ function touched(e) {
     clearAllEvents();
     e.path[0].style.border = "5px solid red";
     e.path[0].style.borderRadius = "50%";
-    victory(playerPlusScore[2].querySelector("h1").textContent);
+    victory(playerPlusScore[scoreRight].querySelector("h1").textContent);
     killedSound();
 
 };
@@ -132,7 +135,7 @@ function timerDuckGame() {
     // TODO : set green to computer 
     imGoodSound();
     clearAllEvents();
-    victory(playerPlusScore[0].querySelector("h1").textContent);
+    victory(playerPlusScore[scoreLeft].querySelector("h1").textContent);
 }
 
 function start(e) {
@@ -147,7 +150,7 @@ function start(e) {
     // Changing the username in the game
     // Adding also the necessary computer in the game
     if (document.getElementById("playerDuck").value.length == 0) {
-        playerPlusScore[0].querySelector("h1").textContent = "COMPUTER";
+        playerPlusScore[scoreLeft].querySelector("h1").textContent = "COMPUTER";
         posCubeUser = -1;
 
         // removing the user to put a computer, as no imput
@@ -159,7 +162,7 @@ function start(e) {
         createComputer();
     } else {
 
-        playerPlusScore[0].querySelector("h1").textContent = document.getElementById("playerDuck").value;
+        playerPlusScore[scoreLeft].querySelector("h1").textContent = document.getElementById("playerDuck").value;
 
         // get the duckTarget
         duckTarget = document.querySelector(".target");
@@ -174,7 +177,7 @@ function start(e) {
 
         duckTarget.style.movingDuck.posX = Math.floor(Math.random() * (800 - 60));;
         duckTarget.style.movingDuck.posY = Math.floor(Math.random() * (600 - 80));;
-        duckTarget.style.top  = duckTarget.style.movingDuck.posY + "px";
+        duckTarget.style.top = duckTarget.style.movingDuck.posY + "px";
         duckTarget.style.left = duckTarget.style.movingDuck.posX + "px";
 
         console.log("Current position : " + duckTarget.style.top + ":" + duckTarget.style.left);
@@ -189,9 +192,9 @@ function start(e) {
 
         //document.setInterval()
 
-        duckRunning = setInterval( movingTarget , 1000 / 60, duckTarget ); 
-        
-        
+        duckRunning = setInterval(movingTarget, 1000 / 60, duckTarget);
+
+
 
 
 
@@ -209,12 +212,13 @@ function start(e) {
     //createComputer();
 
     // set the username on screen
-    playerPlusScore[2].querySelector("h1").textContent = document.getElementById("playerGun").value;
+    playerPlusScore[scoreRight].querySelector("h1").textContent = document.getElementById("playerGun").value;
 
     currentTimer = 30;
-    playerPlusScore[1].querySelector("h1").textContent = "Timer";
-    timerInterval =setInterval (timer, 1000);
-    
+    playerPlusScore[scoreMiddle].querySelector("h1").textContent = "Timer";
+    playerPlusScore[scoreMiddle].querySelector("p").textContent = currentTimer;
+    timerInterval = setInterval(timer, 1000);
+
 
     document.querySelector("#gameRunning").onmousemove = computerMoving;
 
@@ -259,16 +263,16 @@ function victory(whoWin) {
                 removeAllComputer();
                 duckTarget = document.querySelector(".target");
                 if (duckTarget) {
-                    duckTarget.remove();       
+                    duckTarget.remove();
                 }
-                
+
 
                 copyright();
 
             }
             else {
                 restart();
-                
+
             }
         }
     }
@@ -277,10 +281,10 @@ function victory(whoWin) {
 function restart() {
     // show the button restart
     btnRestart.style.display = "initial";
-    
+
     // e.preventDefault();
     const restartbtn = document.querySelector("#formRestart");
-    
+
     // add an event on the button restart
     restartbtn.addEventListener("submit", start);
 }
@@ -288,7 +292,7 @@ function restart() {
 
 // initialise an object duck and return the default value, with the name
 // as parameter, to distinguest all computer and player
-function initialiseDuck (className){
+function initialiseDuck(className) {
     let newDuck = new Array();
 
     newDuck.puissance = 0.3;
@@ -312,41 +316,40 @@ function initialiseDuck (className){
 }
 
 
-function copyright()
-{
+function copyright() {
     const copyr = document.querySelector("#copyright");
 
-   copyr.style.display = "flex";
-   copyr.style.justifyContent="center";
-   copyr.style.alignItems = "center";
-   copyr.style.flexDirection = "column";
-   copyr.style.color = "white";
-   
+    copyr.style.display = "flex";
+    copyr.style.justifyContent = "center";
+    copyr.style.alignItems = "center";
+    copyr.style.flexDirection = "column";
+    copyr.style.color = "white";
 
-   const articles = copyr.querySelectorAll("article");
-   for (const article of articles) {
-       article.style.margin ="auto";
-       article.style.padding = "15px";
-       
-       const h2s=article.querySelectorAll("h2")
-       for (const h2 of h2s) {
-           h2.style.padding = "10px";
-           h2.style.textAlign = "center";
-           h2.style.textDecoration = "underline";
-           //h2.style.textTransform = "underline";
-           h2.style.fontSize = "25px";
-           
-           
+
+    const articles = copyr.querySelectorAll("article");
+    for (const article of articles) {
+        article.style.margin = "auto";
+        article.style.padding = "15px";
+
+        const h2s = article.querySelectorAll("h2")
+        for (const h2 of h2s) {
+            h2.style.padding = "10px";
+            h2.style.textAlign = "center";
+            h2.style.textDecoration = "underline";
+            //h2.style.textTransform = "underline";
+            h2.style.fontSize = "25px";
+
+
         }
-        const h3s=article.querySelectorAll("h3")
+        const h3s = article.querySelectorAll("h3")
         for (const h3 of h3s) {
             h3.style.padding = "5px";
             h3.style.fontSize = "20px";
             h3.style.textAlign = "center";
-        //    h3.style.textDecoration = "underline";
-            
+            //    h3.style.textDecoration = "underline";
+
         }
-   }
+    }
     //copyr.z-index = 1001;
     //copyr.style.z = 1001;
 
@@ -355,5 +358,5 @@ function copyright()
 
 function timer() {
     currentTimer -= 1;
-    playerPlusScore[1].querySelector("p").textContent = currentTimer;
+    playerPlusScore[scoreMiddle].querySelector("p").textContent = currentTimer;
 }
