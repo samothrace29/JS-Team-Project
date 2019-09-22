@@ -18,7 +18,7 @@ function sound(src) {
 function playGunSound() {
     let myMusic = new sound("./sound/gun.mp3");
     curMunition--;
-    if (curMunition == 0) {
+    if ( ( curMunition == 0 )) {
         body.removeEventListener("click", playGunSound);
         timerDuckGame();
     }
@@ -26,8 +26,14 @@ function playGunSound() {
     myMusic.play();
 }
 function killedSound() {
-    let myMusic = new sound("./sound/killedkenny.mp3");
+    // playGunSound(killed);
+    let myMusic = new sound("./sound/gun.mp3");
     myMusic.play();
+    curMunition--;
+    playerPlusScore[scoreMunition].querySelector("p").textContent = curMunition + " / " + maxMunition;
+
+    let myMusic2 = new sound("./sound/killedkenny.mp3");
+    myMusic2.play();
 }
 function imGoodSound() {
     let myMusic = new sound("./sound/imGood.mp3");
