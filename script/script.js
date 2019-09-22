@@ -103,7 +103,10 @@ function start(e) {
         
         // removing the user to put a computer, as no imput
         duckTarget = document.querySelector(".target");
-        duckTarget.remove();
+        if(duckTarget) {
+            duckTarget.remove();
+
+        }
         createComputer ();
     } else {
         

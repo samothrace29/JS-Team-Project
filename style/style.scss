@@ -124,11 +124,25 @@ padding: 20px;
  .target p{
      display : none;
  }
+.targetComputer {
+    height: 10%;
+    width: 10%;
+    background-color: green;
+    position: absolute;
+    top: 40%;
+    left: 40%;
+    background-image: url("../images/imageedit_1_7112313590.png");
+    background-size: cover;
+    background-color: transparent;
+ }
+ .targetComputer p{
+     display : none;
+ }
 
 
 
 
  body{
       background-image: url("../images/717507.jpg");
-      cursor: url("../images/cursor.cur"),crosshair;
+      //cursor: url("../images/cursor.cur"),crosshair;
  }
