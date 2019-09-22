@@ -1,19 +1,3 @@
-/* oneComputer {
-       this.type= "computer";
-       
-       this.posTop= Math.random()*500;
-       this.posLeft= Math.random()*500;
-       this.vitX = 0;
-       this.vitY = 0;
-       this.accX = 0;
-       this.accY = 0;
-       this.puissance = 0.3;
-       this.coeufFriction = 0.8;
-   }
-   
-};*/
-
-
 let listOfComputerActif = new Array();
 
 /*var flagUp = false;
@@ -147,7 +131,7 @@ function createComputer() {
     //const computer = document.querySelector(".target").cloneNode();
     //parentComputer.append(computer);
 
-    let oneComputer = new Array();
+    /*let oneComputer = new Array();
     oneComputer.type = "computer";
     oneComputer.posTop = Math.random() * 1000;
     oneComputer.posLeft = Math.random() * 1000;
@@ -164,42 +148,48 @@ function createComputer() {
     oneComputer.accY = 0;
     oneComputer.puissance = 0.3;
     oneComputer.coeufFriction = 0.8;
-
+    oneComputer.eventClick = null;
+*/
 
     const parentComputer = document.querySelector("#gameRunning");
 
 
-    let div = document.createElement("div");
+    let oneComputer = document.createElement("div");
 
-    div.style.width = "10%";
-    div.style.height = "10%";
 
-    //div.style.backgroundColor= "green";
-    div.style.position = "absolute";
-    div.style.top = "40%";
-    div.style.left = "40%";
+    oneComputer.style.width = "80px";
+    oneComputer.style.height = "60px";
+    oneComputer.style.position = "absolute";
+    
 
     //debugger;
+    oneComputer.style.numericTop =  Math.floor( Math.random()*(600 - 80)) ; //"40%";
+    oneComputer.style.top =oneComputer.style.numericTop+"px";
 
-    div.style.border = "5px solid transparent";
-    div.style.backgroundImage = "url(./images/imageedit_1_7112313590.png)";
-    div.style.backgroundSize = "cover";
-    div.style.backgroundColor = "transparent";
-    //div.style.zIndex= 1000;
+    oneComputer.style.numericLeft = Math.floor( Math.random() * (800 - 60)) ;
+    oneComputer.style.left = oneComputer.style.numericLeft + "px";
 
+    
+    oneComputer.style.border = "5px solid transparent";
+    oneComputer.style.backgroundImage = "url(./images/imageedit_1_7112313590.png)";
+    oneComputer.style.backgroundSize = "cover";
+    oneComputer.style.backgroundColor = "transparent";
 
-
-    div.className = "targetComputer";
+    oneComputer.className = "targetComputer";
     let p = document.createElement("p");
     p.textContent = "Computer";
     p.style.display = "none";
-    div.append(p);
-    parentComputer.append(div);
+    oneComputer.append(p);
+    parentComputer.append(oneComputer);
+
+    console.log(parentComputer);
 
     const aComputer = document.querySelector(".targetComputer");
 
     listOfComputerActif.push(oneComputer);
-    div.addEventListener("click", touched);
+
+    //oneComputer.eventClick = oneComputer; // keep in memory his parent to remove listener later;
+    oneComputer.addEventListener("click", touched);
     console.log("computer Created : ");
     console.log(listOfComputerActif);
 }
@@ -240,7 +230,7 @@ function removeAllComputer() {
         //debugger;
         if (aComputer) {
             aComputer.remove();
-           // parentComputer.remove(aComputer);
+            // parentComputer.remove(aComputer);
             continue;
         }
         break;
@@ -250,9 +240,14 @@ function removeAllComputer() {
 
 
 function computerMoving() {
+ //   debugger;
     for (const computer of listOfComputerActif) {
         if (computer.actif) {
-            console.log("Activity of computer : " + computer.actif);
+            debugger;
+            computer.style.numericLeft += 5;
+            computer.style.left = computer.style.numericLeft + "px";
+            //console.log("after : " + computer.style.left );
+            console.log("Activity of computer : " + computer.actif );
         }
     }
 

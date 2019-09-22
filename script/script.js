@@ -52,7 +52,16 @@ formRestart.addEventListener("submit", start);
 function clearAllEvents() {
     clearTimeout(counterTimeOut);
 
-    duckTarget.removeEventListener("click", touched);
+    if (duckTarget) {
+        duckTarget.removeEventListener("click", touched);
+    }
+    for (const computer of listOfComputerActif) {
+        computer.removeEventListener("click", touched);
+        // computer.("click".touched);
+    }
+    
+    stopComputerMoving();
+
 
     if (!playAlone) {
         document.removeEventListener("keydown", moving);
@@ -68,6 +77,7 @@ function clearAllEvents() {
 function touched(e) {
     clearAllEvents();
     e.path[0].style.border = "5px solid red";
+    e.path[0].style.borderRadius = "50%";
     victory(playerPlusScore[1].querySelector("h1").textContent);
     killedSound();
 
@@ -76,7 +86,15 @@ function touched(e) {
 /* timeout of target , using the variable delaiGame */
 function timerDuckGame() {
     // set green to user duck
-    duckTarget.style.border = "5px solid green";
+    if (duckTarget) {
+
+        duckTarget.style.border = "5px solid green";
+        duckTarget.style.borderRadius = "50%";
+    }
+    for (const computer of listOfComputerActif) {
+        computer.style.border = "5px solid green";
+        computer.style.borderRadius = "50%";
+    }
 
     // TODO : set green to computer 
     imGoodSound();
@@ -90,56 +108,58 @@ function start(e) {
     // removing all previous computer
     removeAllComputer();
 
-    
-    
+
+
     btnRestart.style.display = "none";
     playersInput.style.display = "none";
-    
+
     // Changing the username in the game
     // Adding also the necessary computer in the game
     if (document.getElementById("playerDuck").value.length == 0) {
         playerPlusScore[0].querySelector("h1").textContent = "COMPUTER";
         posCubeUser = -1;
-        
+
         // removing the user to put a computer, as no imput
         duckTarget = document.querySelector(".target");
-        if(duckTarget) {
+        if (duckTarget) {
             duckTarget.remove();
 
         }
-        createComputer ();
+        createComputer();
     } else {
-        
+
         playerPlusScore[0].querySelector("h1").textContent = document.getElementById("playerDuck").value;
-        
+
         // get the duckTarget
         duckTarget = document.querySelector(".target");
 
         duckTarget.style.border = "5px solid transparent";
-        
+
         duckTarget.style.top = Math.floor(Math.random() * Math.floor(90)) + "%";
         duckTarget.style.left = Math.floor(Math.random() * Math.floor(90)) + "%";
         console.log("Current position : " + duckTarget.style.top + ":" + duckTarget.style.left);
-        
+
         duckTarget.style.backgroundColor = "transparent";
         duckTarget.addEventListener("click", touched);
-        
+
         document.addEventListener("keydown", moving);
     }
+    createComputer();
+    createComputer();
     playerPlusScore[1].querySelector("h1").textContent = document.getElementById("playerGun").value;
-    
-    
+
+
     // create all computer
-  //  for (let i = 0; i < 3; i++) {
-   //     createComputer();
-   // }
-    
+    //  for (let i = 0; i < 3; i++) {
+    //     createComputer();
+    // }
+
     // create sound on click event on body => gun sound
     body.addEventListener("click", playGunSound);
-    
-    
-    
-    
+
+
+
+
     body.style.cursor = "url('./images/cursor.cur'),crosshair";
     //body.style.cursor.
     counterTimeOut = setTimeout(timerDuckGame, delaiGame);
