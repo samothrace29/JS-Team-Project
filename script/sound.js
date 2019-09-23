@@ -26,7 +26,6 @@ function playGunSound() {
     myMusic.play();
 }
 function killedSound() {
-    // playGunSound(killed);
     let myMusic = new sound("./sound/gun.mp3");
     myMusic.play();
     curMunition--;

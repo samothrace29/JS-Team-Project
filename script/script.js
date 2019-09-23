@@ -220,12 +220,6 @@ function start(e) {
 
     document.querySelector("#gameRunning").onmousemove = computerMoving;
 
-    // create all computer
-    //  for (let i = 0; i < 3; i++) {
-    //     createComputer();
-    // }
-
-    // create sound on click event on body => gun sound
     body.addEventListener("click", playGunSound);
 
 
