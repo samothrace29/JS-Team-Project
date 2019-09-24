@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Rest'o'Ranch</title>
+</head>
+
+<body>
+  <h1>Rest'o'Ranch</h1>
+  <p id="opening">Open/Close</p>
+  <script>
+    // FIRST - Restorant if open from 11h to 14h
+    /*
+     1 GATHER data of
+      the current hour
+      (and current minutes)
+      using documentation of Date().getHours()
+    */
+    const now = new Date();
+    let currentHour = now.getHours();
+    let currentMinutes = now.getMinutes();
+    currentHour = 14; // debug
+    currentMinutes = 45; // debug
+
+    const opentime
+    /*
+      2 - HANDLE the data
+          The hours should be between ? and ?
+    */
+    const openTag = document.querySelector("#opening");
+    const openLunch = currentHour >= 11 && currentHour < 14;
+    const openDinner = currentHour >= 19 && currentHour < 23;
+
+    const closingSoonLunch = currentHour == 13 && currentMinutes >= 30;
+    const closingSoonDiner = currentHour == 22 && currentMinutes >= 30;
+
+    if (openLunch || openDinner) {
+      openTag.textContent = "Open";
+      //check for last minutes
+      if (closingSoonLunch || closingSoonDiner) {
+        const remainTime = 60 - currentMinutes;
+        openTag.textContent = "Closing in " + remainTime + "min, hurry !!!";
+      }
+
+    } else {
+      openTag.textContent = "Closed";
+    }
+
+    /*
+      3 - DISPLAY the data
+          Select the #opening element
+          Replace its content with OPEN or CLOSED
+     */
+    // THEN - Open also from 19h to 23h
+    // LATER - Message telling the user 
+    //        that the restaurant close in ... less that 30min
+  </script>
+</body>
+
+</html>

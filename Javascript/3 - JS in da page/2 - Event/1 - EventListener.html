@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Document</title>
+</head>
+
+<body>
+  <button>ClickMe</button>
+  <script>
+    //selectors
+    const myButton = document.querySelector("button");
+
+    //create an event listener
+    //with anonymous function
+    myButton.addEventListener("click", function (event) {
+      console.log("click");
+
+      console.log(event);
+    });
+    //defined function
+    myButton.addEventListener("dblclick", fartGenerator);
+    function fartGenerator(e) {
+      console.log("Doudble PROUT!");
+      console.log(e);
+    }
+    //you can remove Event listener
+    //but it need to know what function to remove
+    //myButton.removeEventListener("dblclick", fartGenerator);
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Create Elements</title>
+  <style>
+    article {
+      border: 1px solid black;
+      width: 200px;
+      margin: 2rem auto;
+    }
+
+    .mockup {
+      display: none;
+    }
+
+    .technology {
+      border: 1px solid blue;
+    }
+
+    .sport {
+      border: 1px solid green;
+    }
+  </style>
+</head>
+
+<body>
+  <section>
+    <h1>Create Elements</h1>
+    <article class="mockup">
+      <h2>MOCKUP</h2>
+      <p>sample text</p>
+    </article>
+  </section>
+  <script>
+    const newArticle = document.createElement("article");
+    document.querySelector("section").appendChild(newArticle);
+
+    const newTitle = document.createElement("h2");
+    // https://developer.mozilla.org/fr/docs/Web/API/ParentNode/append
+    newArticle.append(newTitle);
+    newTitle.innerText = "Something else";
+    newTitle.addEventListener("click", function () {
+      newTitle.remove(); // remove an element
+    });
+
+    //My datas - JSON
+    const articlesArray = [
+      {
+        title: "My first Article",
+        content:
+          "Literally disrupt af slow-carb iceland banjo. Tumblr heirloom af helvetica PBR&B, fam pork belly gastropub ramps austin. VHS meh meditation occupy fanny pack. Shabby chic af kale chips YOLO try-hard glossier kinfolk lomo polaroid bicycle rights poutine scenester chillwave leggings food truck.",
+        category: "sport"
+      },
+      {
+        title: "My Second Article",
+        content:
+          "Four loko freegan typewriter beard marfa drinking vinegar knausgaard hashtag chambray health goth. PBR&B synth direct trade 3 wolf moon stumptown. Blog hoodie kickstarter food truck snackwave scenester shabby chic affogato readymade disrupt marfa. Mlkshk tattooed vegan cred leggings typewriter deep v live-edge. Migas cornhole meggings tacos flexitarian 90's sustainable biodiesel typewriter tumeric. Vegan mlkshk shabby chic, chambray keffiyeh tattooed echo park ennui.",
+        category: "technology"
+      }
+    ];
+
+
+    // METHOD with a mockup
+    //Loop on the datas
+    console.log(articlesArray);
+
+    for (const articleData of articlesArray) {
+      //debugger;
+      //create copy of the mockup
+      const myMockup = document.querySelector(".mockup");
+      // https://developer.mozilla.org/fr/docs/Web/API/Node/cloneNode
+      const newArticleHTML = myMockup.cloneNode(true);
+      document.querySelector("section").append(newArticleHTML);
+      //Modify the title
+      newArticleHTML.querySelector("h2").innerText = articleData.title;
+      //Modify the paragraph
+      newArticleHTML.querySelector("p").innerText = articleData.content;
+      // Class contains the caterogy
+      newArticleHTML.classList.add(articleData.category);
+      newArticleHTML.classList.remove("mockup");
+      //I want to see you again
+      newArticleHTML.style.display = "block";
+    }
+
+
+  </script>
+</body>
+
+</html>

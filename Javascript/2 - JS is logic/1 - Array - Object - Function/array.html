@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Array</title>
+</head>
+
+<body>
+  <h1>Array</h1>
+  <script>
+    const firstRow = ["Szabolcs", "Ji Young", "Marc", "Alex"];
+    //To access the whole array
+    console.log(firstRow);
+    console.table(firstRow); // more readable
+    // Access a specific index value
+    console.log(firstRow[1]); // -> "Ji Young"
+    //Get the length of an Array
+    console.log(firstRow.length); // -> 4
+
+    //Strings are like arrays
+    const name = "Igor MARTY";
+    console.log(name[0]); // first letter
+    console.log(name.length); // length of the string
+    console.log(name[name.length - 1]); // access the last letter
+
+    // Directly change value
+    const fullClassRoom = []; // working because array / object
+    fullClassRoom[0] = ["Szabolcs", "Ji Young", "Marc", "Alex"];
+    fullClassRoom[1] = ["Nour", "Reginald", "Dennis", "Jorge", "Gille", "Jérôme"];
+    fullClassRoom[2] = ["Olaf", "Giuseppe", "Fernanda", "Elaine"];
+    //log this variable in the console using the two methods (log and table)
+    console.table(fullClassRoom);
+    //what do you notice ? it's a tableception
+    //How to access the value "Dennis" ?
+    console.log(fullClassRoom[1][2]);
+    // flat fresh new feature to flatten a multiple dimension array
+    console.log(fullClassRoom.flat());
+    // here you can get the full length of it
+    console.log(fullClassRoom.flat().length);
+
+
+    // FUNCTIONS FOR ARRAYS
+    // INCREASE THE SIZE
+    // .push -> add at the end
+    firstRow.push("casper");
+    console.log(firstRow[4]);
+    // .unshift -> add at the begining
+    firstRow.unshift("FIRST!");
+    console.log(firstRow[0]);
+    //.concat -> create a new array merging two or more
+    const secondRow = ["Nour", "Reginald", "Dennis", "Jorge", "Gille", "Jérôme"];
+    const halfClassroom = firstRow.concat(secondRow).concat(["Igor", "Sponge Bob", "Rick", "Morty"]);
+    console.log(halfClassroom);
+
+    // DECREASING SIZE
+    // .pop() remove the last value
+    const removedElement = firstRow.pop();
+    console.log(firstRow);
+
+    // . shift() remove the first value
+    const removedItem = firstRow.shift();
+    console.log(firstRow);
+
+    // FREESTYLE - SPLICE
+    const menu = ["salad", "antipasti", "piatti", "desert"];
+    // splice that start at position 2
+    // remove 1 element
+    // insert the two given values
+    menu.splice(2, 1, "primi piatti", "secondi piatti");
+    console.log(menu);
+
+    // INDEX OF - FIND SOMETHING
+    const whereAreThePASTI = menu.indexOf("antipasti");
+    console.log(whereAreThePASTI); // -> 1
+    const willIDie = menu.indexOf("diabete");
+    console.log(willIDie);
+
+    const username = "IFuckThisGame"; //string is like an array
+    let position = username.indexOf("fuck"); // indexOf will look for that specific word
+    //indexOf is case sensitive
+    //username.toLowerCase() change it to lowercase()
+    position = username.toLowerCase().indexOf("fuck"); // this will work
+    console.log(position, position >= 0); // -> 1 so this username is incorrect because contains the word
+    //console.log can be used for multiple values at the same time
+    // you have to split them using a commat
+
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,70 @@
+3 - Switch.html
+Earlier this year
+May 21
+
+You edited an item
+HTML
+3 - Switch.html
+May 20
+
+You uploaded an item
+HTML
+3 - Switch.html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    //Week exercice
+    //Ask for a number of the week days
+    // (+) to make a number
+
+    //using switch output the day corresponding
+
+    //bonus : find another solution using array
+
+
+    let number = +prompt("Give me a weekday number")
+    let message = "";
+
+    switch (number) {
+      case 1:
+        message = "Monday";
+        break;
+      case 2:
+        message = "Tuesday";
+        break;
+      case 3:
+        message = "Wednesday";
+        break;
+      case 4:
+        message = "Thursday";
+        break;
+      case 5:
+        message = "Friday";
+        break;
+      case 6:
+        message = "Saturday";
+        break;
+      case 7:
+        message = "Sunday";
+        break;
+      default:
+        message = "There are only seven days in a week dummy"
+
+    }
+    alert(message);
+
+    const weekDays = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
+    alert(weekDays[number-1]);
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    let marksArray = [10, 20, 18, 9, 13, 14, 6, 19];
+    //calculate the mean/average of the classroom
+    //averg = sum / nb ...
+    let sum = 0;
+    for (const mark of marksArray) {
+      sum += mark;
+    }
+    let average = sum / marksArray.length;
+    // -> ES6 : reduce
+    console.log(average);
+
+  </script>
+</body>
+
+</html>

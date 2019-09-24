@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <h1>For</h1>
+  <script>
+    const fructs = ["apple", "cake", "ice cream"];
+    //BASIC FOR LOOP
+    for (
+      let index = 0;
+      index < fructs.length;
+      index++
+    ) {
+      const fruct = fructs[index];
+      console.log(index, fruct);
+    }
+
+    for (const fruct of fructs) {
+      console.log(fruct);
+    }
+
+    const users = [
+      {
+        username: "Igor",
+        password: "123"
+      },
+      {
+        username: "SpongeBob",
+        password: "Patrick"
+      },
+      {
+        username: "Morty",
+        password: "Rick"
+      },
+      {
+        username: "FuckThatShit",
+        password: "LemmeAlone"
+      }
+    ]
+    for (const user of users) {
+      if (user.password.length < 6) {
+        alert("change your pass " + user.username);
+      }
+    }
+    //I want to do the check for each of the "dude" in my "users" array
+    for (const dude of users) {
+      // username in lowercase
+      const datusername = dude.username.toLowerCase();
+      //position of the fuck word (-1 if not found)
+      const positionFuck = datusername.indexOf("fuck"); // 0, 1, -1... 
+      // we create a boolean out of the result
+      const fuckWordFound = (positionFuck >= 0); // true , false
+      // we filter the process
+      if (fuckWordFound) {
+        alert("Change you username " + dude.username);
+      }
+    }
+  </script>
+</body>
+
+</html>

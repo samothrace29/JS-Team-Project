@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    let message, guess;
+    //ADV secret is now random;
+    const secret = Math.floor(Math.random() * 10) + 1;
+    console.log(secret);
+
+    let fail = true;
+    while (fail) {
+      let message = "";
+      //ask for a number
+      guess = prompt("Guess my number");
+      //compare the numbers
+      if (guess == secret) { // success
+        fail = false;
+        message = "you won";
+      } else { //fail = true; //no need because it's already true by default
+        //give hints
+        if (guess > secret) {
+          message = "You're too high, bro. Try again";
+        } else {
+          message = "too low, try again";
+        }
+      }
+      alert(message);
+    }
+
+
+    //algorythme check if nb is correct
+    //ELSE mean not found
+    //message = message + "BELOW";
+
+    //BONUS : help the player with advices (above, below)
+    //ADV : he got 5 shots to guess the number
+
+  </script>
+</body>
+
+</html>

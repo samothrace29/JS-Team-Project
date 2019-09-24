@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    //# Exo 1
+    //ask (prompt) the user his name  
+    //and greet him (alert) 👋
+    //const name = prompt("enter your name");
+    //alert("hello " + name);
+
+    //# Exo 2 : toFixed
+    //ask (prompt) the user a gift price
+    //ask (prompt) the user the nb of friends
+    //alert how many should each friend give for the gift 🎁
+    //show the result with two decimal using toFixed() (not seen in course)
+    //const giftPrice = prompt("how much should the gift be");
+    //const friends = prompt("how many friends do you have");
+    //alert("each friend should " + (giftPrice/friends).toFixed(2));
+
+    //# Exo 3 : trunc
+    //Ask for the number of sausages bought
+    //Ask for the number of friend
+    //Alert how many sausages will each friend have 🌭
+    //Alert how many sausages are left for the doggy 🐶
+    const nbSaus = +prompt("enter the number of saucages ");
+    const nbFriend = +prompt("enter nb frinds");
+    const rest = nbSaus % nbFriend;
+    const sauceForFriend = (nbSaus - rest) / nbFriend
+    alert("sauces for friend " + sauceForFriend);
+    alert("left sauceges " + rest);
+
+  </script>
+</body>
+
+</html>

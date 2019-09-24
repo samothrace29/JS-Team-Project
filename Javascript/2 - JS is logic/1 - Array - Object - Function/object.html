@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Object</title>
+</head>
+
+<body>
+  <h1>Object</h1>
+  <script>
+    const fridge = {
+      owner: {
+        name: "Igor",
+        location: "Metz",
+        price: 300
+      },
+      color: "red",
+      temp: 3,
+      open: true,
+      eggs: 3,
+      beverages: ["juice", "beers", "wine"]
+    }
+    console.log(fridge);
+    // PREFERED retrieve values using dot(.)
+    console.log(fridge.color); // -> red
+    // secondary way to retrieve values
+    const propToGet = "open";
+    console.log(fridge[propToGet]); // -> true 
+
+    fridge.meat = "chicken";
+    console.log(fridge);
+
+    // combination
+    console.log(fridge.owner.location);
+    //get the beers out of the fridge
+    // find them
+    const beersLocation = fridge.beverages.indexOf("beers");
+    // drink them
+    fridge.beverages.splice(beersLocation, 1);
+    console.log(fridge);
+
+  </script>
+</body>
+
+</html>

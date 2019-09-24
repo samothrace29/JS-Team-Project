@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Switch</title>
+</head>
+
+<body>
+  <h1>Switch</h1>
+  <script>
+    /*
+      if (animal === 'dog') {
+          alert("WOUAFF!");
+      } else if (animal === 'cat') {
+          alert("MIAOUUU!");
+      } else {
+          alert("FREE PARTY ANIMAL!");
+      }
+      */
+    let animal = prompt("Animal ?");
+    let noise = "";
+    switch (animal) {
+      case "dog":
+        noise = "WAFF";
+        break;
+      case "cat":
+        noise = "MIAOU";
+        break;
+      case "cougar":
+        noise = "GRRR...";
+        break;
+      case "pussino":
+        noise = "PIUU!";
+        break;
+
+      default:
+        noise = "Unknown animal";
+        break;
+    }
+    alert(noise);
+  </script>
+</body>
+
+</html>

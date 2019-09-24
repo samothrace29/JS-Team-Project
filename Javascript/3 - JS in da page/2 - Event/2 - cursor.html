@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Document</title>
+  <style>
+    .cuby {
+      height: 80px;
+      width: 80px;
+      background-color: lightblue;
+      color: white;
+      border-radius: 5px;
+      text-align: center;
+      line-height: 50px;
+      font-size: 2rem;
+      user-select: none;
+      /* Standard */
+      position: absolute;
+      transform: translate(-50%, -50%);
+      left: 100px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="cuby">o_o</div>
+  <script>
+    const myCuby = document.querySelector(".cuby");
+    //mousein
+    myCuby.addEventListener("mouseenter", function () {
+      myCuby.style.border = "5px solid blue";
+    })
+    //click
+    myCuby.addEventListener("click", function () {
+      myCuby.textContent = "X_X";
+      myCuby.style.border = "5px solid red";
+    })
+    //mousemove
+    window.addEventListener("mousemove", function (event) {
+      console.log(event);
+      myCuby.style.top = event.clientY + "px";
+    })
+    //mouseout
+    myCuby.addEventListener("mouseout", function () {
+      myCuby.style.border = "";
+      myCuby.textContent = "o_o come!";
+    })
+  </script>
+</body>
+
+</html>

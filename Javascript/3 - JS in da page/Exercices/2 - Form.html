@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Document</title>
+</head>
+
+<body>
+  <form id="formulaire" action="envoi.php">
+    <label>Nom</label><br />
+    <input id="nom" type="text" name="" />
+    <br />
+    <label>Email</label><br />
+    <input id="email" type="text" name="" />
+    <br />
+    <label>Numero de tel</label><br />
+    <input id="number" type="text" name="" />
+    <br />
+    <button type="submit">Envoyer</button>
+  </form>
+  <script>
+    /*
+    When the form is submitted
+        GATHER : get the #nom input, input value
+                and length of this input value
+        LOGIC : check if the name length if above 4
+        DISPLAY :
+            put a green border if valid
+            put a red border if wrong
+    */
+    // create variable for the usefull elements
+    const myForm = document.querySelector("form");
+    const nomInput = document.querySelector("#nom");
+    const phoneInput = document.querySelector("#number");
+    const emailInput = document.querySelector("#email");
+
+
+    //add the event listeners
+    //when form is submitted
+    myForm.addEventListener("submit", checkItAll);
+    /*
+      BONUS : Verify this on the fly using the input "keyup"
+    */
+    //on each key press of each inputs
+    nomInput.addEventListener("keyup", checkName);
+    phoneInput.addEventListener("keyup", checkPhone);
+    emailInput.addEventListener("keyup", checkEmail);
+
+    //this function check name, phone and email
+    function checkItAll(event) {
+      //e.preventDefault(); // block the normal execution
+      checkName(event);
+      checkEmail(event);
+      checkPhone(event);
+    }
+    //check only the name
+    function checkName(event) {
+      const name = nomInput.value;
+      const nameLength = nomInput.value.length;
+      if (nameLength >= 4) {
+        nomInput.style.borderColor = "green";
+      } else {
+        nomInput.style.borderColor = "red";
+        event.preventDefault();// debug
+      }
+    }
+    /*
+        MEDIUM : check for the phone tel to have exactly than 9 characters
+    */
+    //check only the phone
+    function checkPhone(event) {
+      const phone = phoneInput.value;
+      const phoneLength = phoneInput.value.length;
+      if (phoneLength === 9) {
+        phoneInput.style.borderColor = "green";
+      } else {
+        phoneInput.style.borderColor = "red";
+        event.preventDefault();// debug
+      }
+    }
+    /*
+        ADVANCED : The email should contain a "@" and a dot "."
+        HINT : use .indexOf('.') > -1
+    */
+    //check only the email
+    function checkEmail() {
+      const emailValue = emailInput.value;
+      const containsAt = emailValue.indexOf("@") != -1;
+      const containsDot = emailValue.indexOf(".") != -1;
+      if (containsAt && containsDot) {
+        emailInput.style.borderColor = "green";
+      } else {
+        emailInput.style.borderColor = "red";
+        event.preventDefault(); // debug
+      }
+
+    }
+  </script>
+</body>
+
+</html>

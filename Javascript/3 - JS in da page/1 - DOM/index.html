@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style>
+    .center {
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+  <h1 id="title" class="heading">DOM title</h1>
+  <h2 class="heading">second heading</h2>
+  <input id="username" type="text" value="Igor MARTY" />
+  <input type="checkbox" checked id="acknoledgment">
+
+  <script>
+    // DOM - the html page
+    console.log(document);
+
+    // SELECT ELEMENTS
+    // old but gold selectors
+    const title = document.getElementById("title");
+    console.log(title);
+    const headings = document.getElementsByClassName("heading");
+    console.log(headings);
+    const secondaryTitle = document.getElementsByTagName("h2");
+    console.log(secondaryTitle[0].textContent);
+    // MUST KNOW
+    //return the first element that fits the css selector
+    const daTitle = document.querySelector("h1"); // Select ONE element
+    console.log(daTitle);
+    //return an array that fits the css selector
+    const allDaTitles = document.querySelectorAll("h1,h2");
+    console.log(allDaTitles);
+
+    // CONTENT MODIFICATION
+    console.log(daTitle.textContent);
+    //simple text 
+    daTitle.textContent = "New title is the new trend";
+    daTitle.textContent = "New title is the <em>new</em> trend";
+    daTitle.innerText = "New title is the <em>new</em> trend";
+    daTitle.innerHTML = "New title is the <em>new</em> trend";
+
+    // STYLE MODIFICATION
+    daTitle.style.color = "red";
+    daTitle.style.fontSize = 12;
+    daTitle.style = ""; // clean the style
+
+    // USEFULL ATTRIBUTS
+    daTitle.classList.add("center");
+    daTitle.classList.remove("center");
+    daTitle.classList.toggle("center"); // very usefull
+    daTitle.id = "anotherID"
+    //get the value of an input
+    const usernameValue = document.querySelector("#username").value;
+    console.log(usernameValue);
+    document.querySelector("#acknoledgment").checked = false;
+
+
+    // AND WITH MANY ELEMENTS ???
+    //change all th title to a centered "swaggy" blue;
+    const allTitles = document.querySelectorAll("h1,h2"); // return an ARRAY
+    for (const title of allTitles) {
+      title.textContent = "swaggy";
+      title.style.color = "blue";
+    }
+  </script>
+</body>
+
+</html>

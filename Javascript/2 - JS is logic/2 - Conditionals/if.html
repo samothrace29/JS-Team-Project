@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>IF</title>
+</head>
+
+<body>
+  <h1>IF</h1>
+  <script>
+    /*
+      //inside condition you have to put a truthy/falsy value
+      if (condition) {
+        //some process
+      } else {
+        //some other process
+      }
+    */
+    const teacherHere = true;
+    if (teacherHere) {
+      alert("course will start");
+    } else {
+      alert("PARTY HARD!!!");
+    }
+
+    let age = 18;
+    if (age > 18) {
+      alert("welcome to ...");
+    } else if (age == 18) { // it does this check if the first one didn't match
+      alert("Happy birthday to you");
+    } else {
+      alert("Go away you little piece of s***t");
+    }
+
+    //BOOLEAN ALGEBRA
+    age = 18;
+    console.log(age < 18); // F 
+    console.log(age > 18); // F  
+    console.log(age <= 18); // T
+    console.log(age >= 28); //  F
+
+    //large equality - convert to number and then check for equality
+    console.log(age == 18); // T 
+    console.log(age == 28); // F
+    console.log(age == "28"); // F 
+    console.log("28" == "28"); // T
+    console.log("28" == 28); // T
+
+    //stict equality
+    console.log(age === 18); // T
+    console.log(age === 28); // F
+    console.log(age === "28"); // F 
+    console.log("28" === "28"); // T
+    console.log("28" === 28); // F
+
+    // NOT ! opposite
+    console.log(!teacherHere); // F
+    console.log(!(age >= 18)); // F
+
+    //-------
+    console.log(age != 18); // F
+    console.log(age != 28); // T
+    console.log(age != "28"); // T 
+    console.log("28" != "28"); // F
+    console.log("28" != 28); // F
+
+    //-------
+    console.log(age !== 18); // F
+    console.log(age !== 28); // T
+    console.log(age !== "28"); // T 
+    console.log("28" !== "28"); // F
+    console.log("28" !== 28); // T
+
+
+    // COMBOOO !!!
+    const teacher = true;
+    const students = true;
+    // && AND ampersand
+    if (teacher && students) {
+      alert("Course will start soon.");
+    } else {
+      alert("no course");
+    }
+    // || OR (pipe) altgr + 6 / altgr + 1
+    if (teacher || students) {
+      alert("Their is somebody");
+    } else {
+      alert("Saturday fever o/");
+    }
+    //NOT !
+    if (!teacher) {
+      alert("course is canceled");
+    } else {
+      alert("yeah....");
+    }
+
+    //Advanced Stuff
+    //Ternary operator
+    const message = "";
+    message = (age >= 18) ? "Welcome" : "Go Away";
+
+  </script>
+</body>
+
+</html>

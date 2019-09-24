@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Functions</title>
+</head>
+
+<body>
+  <h1>Functions</h1>
+  <script>
+    //FUNCTIONS : DEFINITION + CALL
+    //Definition 
+    /* USUAL */
+    function oracle() {
+      return "Maybe";
+    }
+    /* LESS COMMON */
+    const yesMan = function () {
+      return "yes";
+    }
+    /* Specific case Arrow function */
+    const noMan = () => {
+      return "no";
+    }
+    //Execution
+    let prediction = oracle(); // The call
+    prediction = yesMan(); // The call
+    prediction = noMan(); // The call
+    console.log(prediction); // -> Maybe
+
+    //Exercice
+    // 1 - Create the function
+    function bestJamesBond() {
+      return "Daniel Craig's List";
+    }
+    // 2 - launch the function
+    console.log(bestJamesBond());
+
+    // FUNCTIONS WITH ONE PARAM
+    function sayMyName(firstName) {
+      return "Hello " + firstName;
+    }
+    console.log(sayMyName("Igor"));
+    console.log(sayMyName("Nour"));
+
+    //Exercice Dog's age
+    /*
+    const dogAge = function (humanAge) {
+      return 7 * humanAge;
+    }
+    const dogAge = (humanAge) => {
+      return 7 * humanAge;
+    }
+    const dogAge = (humanAge) => 7 * humanAge;
+    const dogAge = humanAge => 7 * humanAge;
+    */
+    function dogAge(humanAge) {
+      return 7 * humanAge;
+    }
+    const marley = dogAge(2);
+
+    //Multiple return/output
+    function ageConverter(humanAge) {
+      const ageObject = {
+        human: humanAge,
+        dog: humanAge * 7,
+        cat: humanAge * 10
+      }
+      return ageObject;
+    }
+    let igor = ageConverter(30);
+    console.log(igor);
+
+
+    //Exercice 
+    //from a Year of bith, you'll return the age of the user
+    // You are able to use the age Converter 
+    // to give more complet informations
+    //define a function that expect a parameter year
+    function age(year) {
+      // calculate the age based on the given year
+      const computedAge = 2019 - year;
+      // return the ageObject converted by the other process (ageConverter)
+      return ageConverter(computedAge);
+    }
+    //call of the function
+    //get the object age (human/dog/cat)
+    //retrieve the value of the human property
+    igor = age(1989).human;
+
+    //WITH MORE PARAMETER
+    function add(nb1, nb2) {
+      return nb1 + nb2;
+    }
+    const triple = add(1, 2); //-> 3
+
+    // EXERCICE (Theory, Pratical) => average
+    // Timmy (20,10)
+    // Igor (16,16)
+    // Robert (-4, 0)
+    function average(mark1, mark2) {
+      return (mark1 + mark2 + 1) / 2;
+    }
+    //Nour
+    const interNour = average(15, 17);
+    const finalNour = average(18, 20);
+    const finalGrade = average(interNour, finalNour);
+    console.log(finalGrade);
+
+  </script>
+</body>
+
+</html>

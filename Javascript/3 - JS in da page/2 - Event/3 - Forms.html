@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Document</title>
+</head>
+
+<body>
+  <form action="get-contacted.php">
+    <label>Name</label>
+    <input required id="inputName" name="name" type="text" />
+    <br />
+    <label>email</label>
+    <input id="inputEmail" name="email" type="email" />
+    <br />
+    <label>pasword</label>
+    <input id="inputPass" name="pass" type="password" />
+    <br />
+
+    <input type="submit" />
+  </form>
+  <script>
+    const myForm = document.querySelector("form");
+    const nameInput = document.querySelector("#inputName");
+
+    myForm.addEventListener("submit", function (event) {
+      //event.preventDefault(); // Block the submission
+      console.log("Submitted");
+      checkName(event);
+    });
+    function checkName(event) {
+      //debugger; //debug
+      //gather
+      const name = nameInput.value;
+      console.log(name, name.length);
+      //logic
+      if (name.length >= 8) {
+        nameInput.style.borderColor = "";
+      } else {
+        nameInput.style.borderColor = "red";
+        event.preventDefault();
+      }
+    }
+    
+    nameInput.addEventListener("keyup", checkName);
+  </script>
+</body>
+
+</html>
