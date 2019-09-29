@@ -13,7 +13,6 @@ function createComputer() {
     oneComputer.style.height = "60px";
     oneComputer.style.position = "absolute";
 
-
     // position the computer to a random position
     oneComputer.style.numericTop = Math.floor(Math.random() * (600 - 80)); //"40%";
     oneComputer.style.top = oneComputer.style.numericTop + "px";
@@ -44,16 +43,25 @@ function createComputer() {
     oneComputer.className = uniqNumber;
 
 
+
+
+
     // put a listener on each computer
     oneComputer.style.movingDuck.computerRunning = setInterval(movingTarget, 1000 / 60, oneComputer);
 
-
-
-
     let p = document.createElement("p");
     p.textContent = "Computer " + uniqNumber;
-    p.style.display = "none";
+    p.style.fontSize="10px";
+    p.style.position = "absolute";
+    p.style.left="0";
+    p.style.top="50%";
+    //p.style.transform = "translateX(-50%)"
+   // p.style.display = "none";
     oneComputer.append(p);
+
+
+
+
     parentComputer.append(oneComputer);
 
     console.log(parentComputer);
