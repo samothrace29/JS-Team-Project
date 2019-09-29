@@ -50,7 +50,7 @@ function createComputer() {
     oneComputer.style.movingDuck.computerRunning = setInterval(movingTarget, 1000 / 60, oneComputer);
 
     let p = document.createElement("p");
-    p.textContent = "Computer " + uniqNumber;
+    p.textContent = uniqNumber;
     p.style.fontSize="10px";
     p.style.position = "absolute";
     p.style.left="0";
