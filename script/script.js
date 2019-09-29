@@ -180,13 +180,26 @@ function start(e) {
         duckTarget.style.top = duckTarget.style.movingDuck.posY + "px";
         duckTarget.style.left = duckTarget.style.movingDuck.posX + "px";
 
+        let p = duckTarget.querySelector("p");
+        let i = document.querySelector(".score li h1");
+      //  alert(i.textContent)
+        //p.textContent = "toto";
+        p.style.fontSize="10px";
+        p.style.position = "absolute";
+        p.style.left="0";
+        p.style.top="50%";
+        p.style.display="block";
+        p.textContent = i.textContent;
+
+        duckTarget.style.position ="relative";
+        duckTarget.append(p);
+
+
         console.log("Current position : " + duckTarget.style.top + ":" + duckTarget.style.left);
 
         duckTarget.style.backgroundColor = "transparent";
+
         duckTarget.addEventListener("click", touched);
-
-
-
         document.addEventListener("keydown", startMoving);
         document.addEventListener("keyup", stopMoving);
 
